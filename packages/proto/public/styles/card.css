@@ -55,3 +55,15 @@ drop-down {
         }
     }
 }
+
+.header {
+    width: 100%;
+    h2 {
+        float:left;
+    }
+    div{
+        &:hover {
+            background: lighten(grey, 30%);
+            }
+        }
+}

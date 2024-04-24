@@ -17,4 +17,11 @@
     --color-card-second: #4a8ee7c9;
     --color-card-third: #ef6e6cda;
 
+    --border-radius-small: 5px;
+    --border-radius-med: 15px;
+
+    body.light-mode {
+        --color-background-primary: #E6E6E6;
+        --color-font-primary: #2E2E2E;
+    }
 }

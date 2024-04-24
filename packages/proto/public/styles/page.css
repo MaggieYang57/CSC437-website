@@ -60,7 +60,7 @@ a {
 }
 
 button {
-    border-radius: 15px;
+    border-radius: var(--border-radius-med);
     border-width: 1px;
     border-color: var(--color-background-primary);
     border-style: solid;
@@ -69,5 +69,20 @@ button {
     box-shadow: none;
     margin-top: 10px;
     font-size: var(--font-size-body);
-    
 }
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
+    gap: 10px; /* Adjust gap between cards */
+    margin: 0 -5px;
+}
+.summary-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8); 
+    padding: 16px;
+    height: 40vh;
+    text-align: right;
+    background-color: #f1f1f1;
+    border-radius: var(--border-radius-med);
+}
+

@@ -7,6 +7,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pontano+Sans:wght@300..700&family=Prompt:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script type="module">
+      import { relayEvent } from "/js/relay-event.js";
+      window.relayEvent = relayEvent;
+    </script>
+    <script type="module">
+      function toggleLightMode(page, checked) {
+        page.classList.toggle("light-mode", checked);
+      }
+
+      document.body.addEventListener("light-mode", (event) =>
+        toggleLightMode(
+          event.currentTarget,
+          event.detail.checked
+        )
+      );
+    </script>
   </head>
   <body>
     <header>
@@ -21,7 +37,37 @@
     <div class="landing">
       <h1>FESTIVOUS</h1>
       <h3>Stay Together, Experience Together</h3>
+      <label
+        onchange="relayEvent(
+        event, 
+        'light-mode', 
+        {checked: event.target.checked})">
+        <input type="checkbox" autocomplete="off" /> Light Mode
+      </label>
     </div>
+    <h2>17 DAYS UNTIL...</h2>
+    <div class="featured-card">
+      <h1>COACHELLA</h1>
+    </div>
+    <h3>Look forward to...</h3>
+    <div class="row">
+      <div class="col">
+        <div class="summary-card 1">
+          <h2>5 FESTIVALS</h2>
+        </div>
+      </div>
+      <div class="col">
+        <div class="summary-card 2">
+          <h2>3 ITINERARIES</h2>
+        </div>
+      </div>
+      <div class="col">
+        <div class="summary-card 3">
+          <h2>3 GROUPS</h2>
+        </div>
+      </div>
+    </div>
+    <h3>Are you ready?</h3>
 
   </body>
 </html>
