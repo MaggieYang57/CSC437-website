@@ -1,0 +1,20 @@
+:root {
+    --font-size-body: 1rem;
+    --font-size-med: 1.5rem;
+    --font-size-large: 2rem;
+    --font-size-xlarge: 3rem;
+    --font-size-xxlarge: 4rem;
+
+    --font-weight-body: 300;
+    --font-weight-med: 400;
+    --font-weight-large: 500;
+    --font-weight-xlarge: 800;
+
+    --color-background-primary: #2E2E2E;
+    --color-font-primary: #E6E6E6;
+    
+    --color-card-first: #f6e4ffea;
+    --color-card-second: #4a8ee7c9;
+    --color-card-third: #ef6e6cda;
+
+}

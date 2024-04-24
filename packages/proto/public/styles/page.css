@@ -1,0 +1,73 @@
+body {
+    margin: 1rem;
+    background-color: var(--color-background-primary);
+    color: var(--color-font-primary);
+    font-family: "Pontano Sans", sans-serif;
+    font-weight: var(--font-weight-body);
+    font-size: var(--font-size-body);
+}
+
+h1 {
+    font-family: "Prompt", sans-serif;
+    font-weight: var(--font-weight-xlarge);
+    font-size: var(--font-size-xxlarge);
+    margin-bottom: 0;
+}
+
+h2 {
+    font-family: "Prompt", sans-serif;
+    font-weight: var(--font-weight-xlarge);
+    font-size: var(--font-size-xlarge);
+    margin-bottom: 0;
+}
+
+h3 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: var(--font-weight-large);
+    font-size: var(--font-size-large);
+    margin-top: 0;
+}
+
+a {
+    font-family: "Pontano Sans", sans-serif;
+    text-decoration: none;
+    color: var(--color-font-primary);
+    font-weight: var(--font-weight-body);
+    font-size: var(--font-size-med);
+}
+
+.nav{
+    display: block;
+
+    a {
+        padding: 1rem;
+    }
+
+    .logo {
+        font-family: "Prompt", sans-serif;
+        font-weight: var(--font-weight-xlarge);
+        font-size: var(--font-size-large);
+        margin-right: 1rem;
+    }
+
+    .right{
+        float: right;
+    }
+}
+
+.landing {
+    margin-top: 3rem;
+}
+
+button {
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: var(--color-background-primary);
+    border-style: solid;
+    background-color: transparent;
+    padding: 5px 15px;
+    box-shadow: none;
+    margin-top: 10px;
+    font-size: var(--font-size-body);
+    
+}
