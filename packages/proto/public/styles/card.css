@@ -1,16 +1,14 @@
 drop-down {
-    
     .line {
         position: absolute;
         width: var(--line-width); 
-        height: 90%; 
+        height: var(--line-height); 
         background-color: black; 
     }
     
     .loaded-content {
-        flex: 1;
-        margin: 10px 0 20px 0;
-        padding-left: 20px;
+        margin: var(--margin-size-small) 0;
+        padding-left: var(--margin-size-small);
         h1 {
             font-size: var(--font-size-xlarge);
         }
@@ -21,30 +19,30 @@ drop-down {
 }
 
 .card {
-    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--box-shadow-dark);
     color: var(--color-background-primary);
     display: flex;
-    margin: 30px auto;
-    width: 60vw;
+    margin: var(--margin-size-med) auto;
+    width: var(--card-width);
     height: auto;
     border-radius: var(--border-radius-med);
-    background-size:cover;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
 }
 .card:hover {
-    box-shadow: 0px 0px 16px 5px rgba(255, 255, 255, 0.5);
+    box-shadow: var(--box-shadow-light);
 }
 
 .container {
-    padding: 10px 16px;
+    padding: var(--margin-size-small) var(--margin-size-med);
     background-color: var(--overlay-color-xlight);
     border-radius: var(--border-radius-med);
     transition: transform 4s ease-in-out; 
     position: relative;
     display: grid;
-    width: 70%;
+    width: var(--container-width);
     left: 0;
 }
 
@@ -54,7 +52,7 @@ drop-down {
 
 .header {
     position: relative;
-    width: 100%;
+    width: var(--full-width);
     h2 {
         float:left;
     }
@@ -62,19 +60,18 @@ drop-down {
 
 
 .summary-card {
-    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
-    height: 40vh;
+    box-shadow: var(--box-shadow-dark);
+    height: var(--card-height);
     text-align: right;
-    background-color: #f1f1f1;
     border-radius: var(--border-radius-med);
     cursor: pointer;
 
     h2{
         bottom: 0;
-        right:0;
+        right: 0;
         margin: 0;
         position: absolute;
-        font-size: 4vw;
+        font-size: var(--font-size-summary);
     }
     &.first {
         background-image: url("../images/ferris-wheel.jpg");
@@ -90,9 +87,9 @@ drop-down {
 }
 
 .overlay {
-    width: 100%;
-    height: 100%;
     z-index: 2;
+    width: var(--full-width);
+    height: var(--full-width);
     position: relative;
     background-color: var(--overlay-color);
     border-radius: var(--border-radius-med);
@@ -100,7 +97,7 @@ drop-down {
     color: var(--color-font-primary);
 }
 .festival {
-    padding: 20px;
+    padding: var(--margin-size-small);
     background-color: var(--overlay-color-light);
     color: var(--color-background-primary);
 }

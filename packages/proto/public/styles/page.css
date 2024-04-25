@@ -93,8 +93,8 @@ input {
 .row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin: 20px -5px;
+    gap: var(--card-gap);
+    margin: var(--margin-size-small) var(--margin-size-neg);
 }
 
 .centered{
@@ -103,7 +103,7 @@ input {
 }
 
 .profile-pic{
-    box-shadow: var(--box-shadow-default);
+    box-shadow: var(--box-shadow-dark);
     margin: var(--body-margin);
     width: var(--picture-width);
     height: var(--picture-width);
