@@ -27,14 +27,14 @@ export class KebabMenu extends HTMLElement {
             padding: 5px 15px;
             box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
             border-radius: var(--border-radius-small);
-            background: var(--color-font-primary);
+            background: white;
             text-align: center;
+        }
+        div {
+            padding: 15px 0;
         }
         :host([open]) #panel {
             display: block;
-        }
-        #panel:hover div{
-            background: #dcc9e6ea;
         }
         button {
             background-color: transparent;
