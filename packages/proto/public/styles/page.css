@@ -1,32 +1,29 @@
 body {
-    margin: 1rem;
+    margin: var(--body-margin);
     background-color: var(--color-background-primary);
     color: var(--color-font-primary);
     font-family: "Pontano Sans", sans-serif;
     font-weight: var(--font-weight-body);
     font-size: var(--font-size-body);
-    letter-spacing: 1px;
+    letter-spacing: var(--line-width);
 }
 
 h1 {
     font-family: "Prompt", sans-serif;
     font-weight: var(--font-weight-xlarge);
     font-size: var(--font-size-xxlarge);
-    margin-bottom: 0;
 }
 
 h2 {
     font-family: "Prompt", sans-serif;
     font-weight: var(--font-weight-xlarge);
     font-size: var(--font-size-xlarge);
-    margin-bottom: 0;
 }
 
 h3 {
     font-family: "Open Sans", sans-serif;
     font-weight: var(--font-weight-large);
     font-size: var(--font-size-large);
-    margin-top: 0;
 }
 
 a {
@@ -39,25 +36,25 @@ a {
 
 button {
     border-radius: var(--border-radius-large);
-    border-width: 1px;
+    border-width: var(--line-width);
     border-color: var(--color-background-primary);
     border-style: solid;
     background-color: transparent;
-    padding: 5px 15px;
+    padding: var(--button-padding);
     box-shadow: none;
-    margin-top: 10px;
+    margin-top: var(--margin-size-small);
     font-size: var(--font-size-body);
 
     &.add-button {
         border-color: var(--color-font-primary);
         color: var(--color-font-primary);
-        margin: 30px auto;
+        margin: var(--margin-size-med) auto;
         left: auto;
         right: auto;
         display: block;
-        width: 60vw;
+        width: var(--card-width);
         height: auto;
-        transition: 0.2s;
+        transition: var(--transition-default);
         font-size: var(--font-size-large);
     }
     &.add-button:hover {
@@ -67,31 +64,30 @@ button {
     }
 }
 input {
-    margin-top: 20px;
+    margin-top: var(--margin-size-med);
 }
 
 .nav{
     display: block;
 
     a {
-        padding: 1rem;
+        padding: var(--body-margin);
     }
 
     .logo {
         font-family: "Prompt", sans-serif;
         font-weight: var(--font-weight-xlarge);
         font-size: var(--font-size-large);
-        margin-right: 1rem;
     }
 
     .right{
         float: right;
-        margin-top: -5px;
+        margin-top: var(--margin-size-neg);
     }
 }
 
 .landing {
-    margin: 3rem 0rem;
+    margin: var(--margin-size-med) 0;
 }
 
 .row {
@@ -103,14 +99,14 @@ input {
 
 .centered{
     text-align: center;
-    margin-top: 5rem;
+    margin-top: var(--margin-size-large);
 }
 
 .profile-pic{
-    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
-    margin: 1rem;
-    width: 20vw;
-    height: 20vw;
+    box-shadow: var(--box-shadow-default);
+    margin-right: var(--body-margin);
+    width: var(--picture-width);
+    height: var(--picture-width);
     border-radius: var(--border-radius-med);
 
 }

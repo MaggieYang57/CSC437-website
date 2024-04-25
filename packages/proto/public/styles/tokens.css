@@ -1,4 +1,10 @@
 :root {
+    --body-margin: 1rem;
+    --margin-size-neg: -5px;
+    --margin-size-small: 10px;
+    --margin-size-med: 30px;
+    --margin-size-large: 50px;
+
     --font-size-body: 1rem;
     --font-size-med: 1.5rem;
     --font-size-large: 2rem;
@@ -12,6 +18,7 @@
 
     --color-background-primary: #2E2E2E;
     --color-font-primary: #E6E6E6;
+    --box-shadow-default: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
     --overlay-color:  rgba(0, 0, 0, 0.3);
     --overlay-color-light:  rgba(255, 255, 255, 0.6);
     --overlay-color-xlight: rgba(255, 255, 255, 0.9);
@@ -23,6 +30,14 @@
     --border-radius-small: 5px;
     --border-radius-med: 10px;
     --border-radius-large: 15px;
+    --line-width: 1px;
+
+    --button-padding: 5px 15px;
+
+    --card-width: 60vw;
+    --picture-width: 20vw;
+
+    --transition-default: 0.2s;
 
     body.light-mode {
         --color-background-primary: #E6E6E6;

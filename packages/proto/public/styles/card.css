@@ -2,7 +2,7 @@ drop-down {
     
     .line {
         position: absolute;
-        width: 1px; 
+        width: var(--line-width); 
         height: 90%; 
         background-color: black; 
     }
