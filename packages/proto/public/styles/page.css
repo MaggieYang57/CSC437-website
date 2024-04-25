@@ -104,7 +104,7 @@ input {
 
 .profile-pic{
     box-shadow: var(--box-shadow-default);
-    margin-right: var(--body-margin);
+    margin: var(--body-margin);
     width: var(--picture-width);
     height: var(--picture-width);
     border-radius: var(--border-radius-med);
