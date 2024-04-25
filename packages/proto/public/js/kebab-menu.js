@@ -24,22 +24,14 @@ export class KebabMenu extends HTMLElement {
             position: absolute;
             right: 0;
             width: max-content;
-            padding: 5px 15px;
-            box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+            padding: var(--button-padding);
+            box-shadow: var(--box-shadow-dark);
             border-radius: var(--border-radius-small);
             background: var(--color-font-primary);
             text-align: center;
         }
-        div {
-            padding: 15px 0;
-        }
         :host([open]) #panel {
             display: block;
-        }
-        button {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
         }
     </style>
     </template>`);
