@@ -66,6 +66,9 @@ button {
         border-color: var(--color-background-primary);
     }
 }
+input {
+    margin-top: 20px;
+}
 
 .nav{
     display: block;
