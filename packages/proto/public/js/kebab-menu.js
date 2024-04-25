@@ -3,41 +3,43 @@ import { prepareTemplate } from "./template.js";
 export class KebabMenu extends HTMLElement {
     parser = new DOMParser();
 
-    // <object data="./images/kebab-menu.svg" width="30px"></object> inside slot doesn't work
+    //  inside slot doesn't work
     // where do i do :hover styling for shadowDom
     static template = prepareTemplate(`<template>
     <slot name="actuator">
-        <button>Menu</button
+        <img src="./images/kebab-menu.svg" width="30px"/>
     </slot>
     <div id="panel">
         <slot></slot>
     </div>
     <style>
         :host {
-            position: fixed;
-            float: right;
-            cursor: pointer
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
         }
         #panel {
             display: none;
-            position: left;
+            position: absolute;
+            right: 0;
             width: max-content;
             padding: 5px 15px;
-            border-width: 1px;
-            border-color: var(--color-background-primary);
-            border-style: solid;
+            box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
             border-radius: var(--border-radius-small);
-            background: var(--color-card-first);
+            background: var(--color-font-primary);
+            text-align: center;
         }
         :host([open]) #panel {
             display: block;
         }
-        div:hover{
-                background: lighten(grey, 30%);
+        #panel:hover div{
+            background: #dcc9e6ea;
         }
-
-        object{
-            color: var(--color-background-primary)
+        button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
         }
     </style>
     </template>`);

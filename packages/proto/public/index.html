@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/page.css" />
+    <link rel="stylesheet" href="./styles/card.css" />
     <link rel="stylesheet" href="./styles/tokens.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +30,7 @@
       <nav class='nav'>
         <a href="/index.html" class="logo">FESTIVOUS</a>
         <a href="/festival.html">FESTIVALS</a>
-        <a href="/itinerary.html">ITINERARIES</a>
+        <a href="/rendezvous.html">RENDEZVOUS</a>
         <a href="/group.html">GROUPS</a>
         <a href="/profile.html" class="right">PROFILE</a>
       </nav>
@@ -45,30 +46,37 @@
         <input type="checkbox" autocomplete="off" /> Light Mode
       </label>
     </div>
-    <h2>17 DAYS UNTIL...</h2>
-    <div class="featured-card">
-      <h1>COACHELLA</h1>
+    <div class="centered">
+        <h3>17 DAYS UNTIL...</h3>
+        <div class="featured-card">
+          <h1>COACHELLA</h1>
+        </div>
+      <h3>Look forward to...</h3>
+      <div class="row">
+        <div class="col">
+          <div class="summary-card first" onclick="location.href='festival.html'">
+            <div class="overlay">
+              <h2>5 FESTIVALS</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="summary-card second" onclick="location.href='rendezvous.html'">
+            <div class="overlay">
+              <h2>3 RENDEZVOUS</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="summary-card third" onclick="location.href='group.html'">
+            <div class="overlay">
+              <h2>3 GROUPS</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3 style="margin-top: 2rem;">Are you ready?</h3>
     </div>
-    <h3>Look forward to...</h3>
-    <div class="row">
-      <div class="col">
-        <div class="summary-card 1">
-          <h2>5 FESTIVALS</h2>
-        </div>
-      </div>
-      <div class="col">
-        <div class="summary-card 2">
-          <h2>3 ITINERARIES</h2>
-        </div>
-      </div>
-      <div class="col">
-        <div class="summary-card 3">
-          <h2>3 GROUPS</h2>
-        </div>
-      </div>
-    </div>
-    <h3>Are you ready?</h3>
-
   </body>
 </html>
 

@@ -12,16 +12,19 @@
 
     --color-background-primary: #2E2E2E;
     --color-font-primary: #E6E6E6;
+    --overlay-color:  rgba(0, 0, 0, 0.3);
     
     --color-card-first: #f6e4ffea;
-    --color-card-second: #4a8ee7c9;
-    --color-card-third: #ef6e6cda;
+    --color-card-second: #9bc6ffc9;
+    --color-card-third: #fd9896da;
 
     --border-radius-small: 5px;
-    --border-radius-med: 15px;
+    --border-radius-med: 10px;
+    --border-radius-large: 15px;
 
     body.light-mode {
         --color-background-primary: #E6E6E6;
         --color-font-primary: #2E2E2E;
+        --overlay-color:  rgba(255, 255, 255, 0.5);
     }
 }

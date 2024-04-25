@@ -36,6 +36,36 @@ a {
     font-size: var(--font-size-med);
 }
 
+button {
+    border-radius: var(--border-radius-large);
+    border-width: 1px;
+    border-color: var(--color-background-primary);
+    border-style: solid;
+    background-color: transparent;
+    padding: 5px 15px;
+    box-shadow: none;
+    margin-top: 10px;
+    font-size: var(--font-size-body);
+
+    &.add-button {
+        border-color: var(--color-font-primary);
+        color: var(--color-font-primary);
+        margin: 30px auto;
+        left: auto;
+        right: auto;
+        display: block;
+        width: 60vw;
+        height: auto;
+        transition: 0.2s;
+        font-size: var(--font-size-large);
+    }
+    &.add-button:hover {
+        background-color: var(--color-font-primary);
+        color: var(--color-background-primary);
+        border-color: var(--color-background-primary);
+    }
+}
+
 .nav{
     display: block;
 
@@ -52,37 +82,31 @@ a {
 
     .right{
         float: right;
+        margin-top: -5px;
     }
 }
 
 .landing {
-    margin-top: 3rem;
-}
-
-button {
-    border-radius: var(--border-radius-med);
-    border-width: 1px;
-    border-color: var(--color-background-primary);
-    border-style: solid;
-    background-color: transparent;
-    padding: 5px 15px;
-    box-shadow: none;
-    margin-top: 10px;
-    font-size: var(--font-size-body);
+    margin: 3rem 0rem;
 }
 
 .row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
-    gap: 10px; /* Adjust gap between cards */
-    margin: 0 -5px;
-}
-.summary-card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8); 
-    padding: 16px;
-    height: 40vh;
-    text-align: right;
-    background-color: #f1f1f1;
-    border-radius: var(--border-radius-med);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px -5px;
 }
 
+.centered{
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.profile-pic{
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+    margin: 1rem;
+    width: 20vw;
+    height: 20vw;
+    border-radius: var(--border-radius-med);
+
+}
