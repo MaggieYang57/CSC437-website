@@ -27,7 +27,7 @@ export class KebabMenu extends HTMLElement {
             padding: 5px 15px;
             box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
             border-radius: var(--border-radius-small);
-            background: white;
+            background: var(--color-font-primary);
             text-align: center;
         }
         div {

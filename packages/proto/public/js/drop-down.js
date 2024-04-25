@@ -12,7 +12,7 @@ export class DropDownElement extends HTMLElement {
             this.loadDetails(href, this);
         }
         this.addEventListener("drop-down:open", () => this.loadDetails(href, this));
-        const viewButton = document.getElementById('view-button');
+        const viewButton = this.querySelector('#view-button');
         viewButton.addEventListener("click", () => {
             this.toggle()
         });

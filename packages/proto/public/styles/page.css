@@ -5,6 +5,7 @@ body {
     font-family: "Pontano Sans", sans-serif;
     font-weight: var(--font-weight-body);
     font-size: var(--font-size-body);
+    letter-spacing: 1px;
 }
 
 h1 {
