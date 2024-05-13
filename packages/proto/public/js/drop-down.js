@@ -1,3 +1,4 @@
+import { addFragment } from "./fragment-loader";
 
 export class DropDownElement extends HTMLElement {    
     constructor() {
@@ -41,21 +42,15 @@ export class DropDownElement extends HTMLElement {
           }
           return response.text();
         })
-        .then((htmlString) => this.addFragment(htmlString, container))
+        .then((htmlString) => addFragment(htmlString, container))
         .catch((error) =>
-          this.addFragment(
+          addFragment(
             `<p class="error">
             Failed to fetch ${href}: ${error}
             </p>`,
             container
           )
         );
-    }
-
-    addFragment(htmlString, container) {
-        const doc = this.parser.parseFromString(htmlString, "text/html");
-        const fragment = Array.from(doc.body.childNodes);
-        container.append(...fragment);
     }
 }
 
