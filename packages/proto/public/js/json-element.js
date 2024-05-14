@@ -5,7 +5,6 @@ export class JsonObjectElement extends HTMLElement {
   static template = prepareTemplate(`<template>
       <dl>
         <slot></slot>
-        <h1>Hi</h1>
       </dl>
       <style>
         dl {

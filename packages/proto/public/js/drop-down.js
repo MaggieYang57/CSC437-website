@@ -1,4 +1,4 @@
-import { addFragment } from "./fragment-loader";
+import { addFragment } from "./fragment-loader.js";
 
 export class DropDownElement extends HTMLElement {    
     constructor() {
@@ -20,7 +20,6 @@ export class DropDownElement extends HTMLElement {
     }
 
     toggle() {
-        console.log('called togll')
         if (this.hasAttribute("open")) {
             this.removeAttribute("open");
             this.dispatchEvent(new CustomEvent("drop-down:close"));
