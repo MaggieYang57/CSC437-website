@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import profiles from "./routes/profiles";
 import { connect } from "./services/mongo";
+import auth, { authenticateUser } from "./routes/auth";
 
 connect('festivous-cluster');
 const app = express();
@@ -10,7 +11,8 @@ const staticDir = process.env.STATIC || "public";
 app.use(express.static(staticDir));
 app.use(express.json());
 
-app.use("/api/profiles", profiles);
+app.use("/auth", auth);
+app.use("/api/profiles", authenticateUser, profiles);
 
 app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello, World");
