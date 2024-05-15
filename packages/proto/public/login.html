@@ -28,25 +28,28 @@
     <script type="module" src="/js/restful-form.js"></script>
     <script type="module" src="/js/input-array.js"></script>
     <script type="module" src="/js/profile-viewer.js"></script>
+    <script type="module" src="/js/login-form.js"></script>
 </head>
   <body>
-    <header>
-        <nav class='nav'>
-          <a href="/index.html" class="logo">FESTIVOUS</a>
-          <a href="/festival.html">FESTIVALS</a>
-          <a href="/rendezvous.html">RENDEZVOUS</a>
-          <a href="/group.html">GROUPS</a>
-          <a href="/login.html" class="right">PROFILE</a>
-          <a href="#"
-            onclick="relayEvent(event, 'auth:message', ['auth/signout'])">
-            Sign out
-            </a>
-        </nav>
-    </header>
-    <mu-auth provides="festivous:auth" redirect="../login.html">
-        <main>
-            <profile-view src="/api/profiles/bonnie"> </profile-view>
+    <mu-auth>
+        <h2>User Login</h2>
+        <main class="card">
+          <login-form>
+            <label>
+              <span>Username:</span>
+              <input name="username" autocomplete="off" />
+            </label>
+            <label>
+              <span>Password:</span>
+              <input type="password" name="password" />
+            </label>
+          </login-form>
         </main>
+        <p>
+          Or did you want to
+          <a href="./newuser.html">Sign up as a new user</a>
+          ?
+        </p>
     </mu-auth>
   </body>
 </html>

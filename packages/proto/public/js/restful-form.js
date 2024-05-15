@@ -1,7 +1,16 @@
 import { prepareTemplate } from "./template.js";
+import { Observer } from "@calpoly/mustang";
 
 export class RestfulFormElement extends HTMLElement {
   static observedAttributes = ["src", "new"];
+
+  get src() {
+    return this.getAttribute("src");
+  }
+
+  get isNew() {
+    return this.hasAttribute("new");
+  }
 
   static template = prepareTemplate(`
     <template>
@@ -15,14 +24,14 @@ export class RestfulFormElement extends HTMLElement {
           display: grid;
           gap: var(--margin-size-small);
           grid-template-columns: [start] 1fr [label] 1fr [input] 3fr 1fr [end];
-          align-items: baseline; 
         }
         ::slotted(label) {
           display: grid;
           grid-column: label / end;
           grid-template-columns: subgrid;
+          gap: var(--margin-size-small);
         }
-        button[type="delete"] {
+        button[type="submit"] {
           grid-column: input;
           justify-self: start;
         }
@@ -32,14 +41,6 @@ export class RestfulFormElement extends HTMLElement {
 
   get form() {
     return this.shadowRoot.querySelector("form");
-  }
-
-  get src() {
-    return this.getAttribute("src");
-  }
-
-  get isNew() {
-    return this.hasAttribute("new");
   }
 
   constructor() {
@@ -58,32 +59,24 @@ export class RestfulFormElement extends HTMLElement {
         ? this.src.replace(/[/][$]new$/, "")
         : this.src;
 
-      submitForm(
-        this.src,
-        this._state,
-        method)
-      .then((json) => populateForm(json, this))
-      .then((json) => {
-        const customType = `restful-form:${action}`;
-        const event = new CustomEvent(customType, {
-          bubbles: true,
-          composed: true,
-          detail: {
-            [action]: json,
-            url: src
-          }
+      submitForm(src, this._state, method, this.authorization)
+        .then((json) => populateForm(json, this))
+        .then((json) => {
+          const customType = `restful-form:${action}`;
+          const event = new CustomEvent(customType, {
+            bubbles: true,
+            composed: true,
+            detail: {
+              method,
+              [action]: json,
+              url: src
+            }
+          });
+          this.dispatchEvent(event);
         });
-        this.dispatchEvent(event);
-      });;
-    });
-
-    this.addEventListener("restful-form:delete", (event) => {
-      event.stopPropagation();
-      deleteResource(this.src, this);
     });
 
     this.addEventListener("change", (event) => {
-      console.log("Change event on restful-form", event);
       const target = event.target;
       const name = target.name;
       const value = target.value;
@@ -92,27 +85,46 @@ export class RestfulFormElement extends HTMLElement {
     });
   }
 
+  _authObserver = new Observer(this, "festivous:auth");
+
+  get authorization() {
+    return (
+      this._user?.authenticated && {
+        Authorization: `Bearer ${this._user.token}`
+      }
+    );
+  }
+
   connectedCallback() {
-    console.log(`ConnectedCallback: src=`, this.src);
+    this._authObserver.observe().then((obs) => {
+      obs.setEffect(({ user }) => {
+        this._user = user;
+        if (this.src) {
+          loadJSON(
+            this.src,
+            this,
+            renderSlots,
+            this.authorization
+          );
+        }
+      });
+    });
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log(
-      `restful-form: Attribute ${name} changed from ${oldValue} to`,
-      newValue
-    );
     switch (name) {
       case "src":
         if (newValue && newValue !== oldValue && !this.isNew) {
-          fetchData(this.src).then((json) => {
-            this._state = json;
-            populateForm(json, this);
-          });
+          fetchData(this.src, this.authorization).then(
+            (json) => {
+              this._state = json;
+              populateForm(json, this);
+            }
+          );
         }
         break;
       case "new":
         if (newValue) {
-          console.log("Blanking state for new form");
           this._state = {};
           populateForm({}, this);
         }
@@ -123,8 +135,8 @@ export class RestfulFormElement extends HTMLElement {
 
 customElements.define("restful-form", RestfulFormElement);
 
-export function fetchData(src) {
-  return fetch(src)
+export function fetchData(src, authorization) {
+  return fetch(src, { headers: authorization })
     .then((response) => {
       if (response.status !== 200) {
         throw `Status: ${response.status}`;
@@ -142,7 +154,7 @@ function populateForm(json, formBody) {
   for (const [key, val] of entries) {
     const input = formBody.querySelector(`[name="${key}"]`);
 
-    console.log(`Populating ${key}`, input);
+    // console.log(`Populating ${key}`, input);
     if (input) {
       switch (input.type) {
         case "checkbox":
@@ -158,28 +170,24 @@ function populateForm(json, formBody) {
   return json;
 }
 
-function submitForm(src, json, method = "PUT") {
+function submitForm(
+  src,
+  json,
+  method = "PUT",
+  authorization = {}
+) {
   return fetch(src, {
     method,
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      ...authorization
+    },
     body: JSON.stringify(json)
   })
     .then((res) => {
-      if (res.status != 200)
+      if (res.status != 200 && res.status != 201)
         throw `Form submission failed: Status ${res.status}`;
       return res.json();
     })
     .catch((err) => console.log("Error submitting form:", err));
-}
-
-function deleteResource(src, form) {
-  fetch(src, { method: "DELETE" })
-    .then((res) => {
-      if (res.status != 204)
-        throw `Deletion failed: Status ${res.status}`;
-      form.reset();
-    })
-    .catch((err) =>
-      console.log("Error deleting resource:", err)
-    );
 }

@@ -42,23 +42,33 @@ export class JsonObjectElement extends HTMLElement {
 
 customElements.define("json-object", JsonObjectElement);
 
-export function loadJSON(src, container, render) {
+export function loadJSON(
+  src,
+  container,
+  render,
+  authorization
+) {
   container.replaceChildren();
-  fetch(src)
+  fetch(src, {
+    headers: authorization
+  })
     .then((response) => {
       if (response.status !== 200) {
-        throw `Status: ${response.status}`;
+        throw {
+          status: response.status,
+          url: src,
+          headers: authorization
+        };
       }
       return response.json();
     })
     .then((json) => addFragment(render(json), container))
     .catch((error) =>
       addFragment(
-        `<dt class="error">Error</dt>
-         <dd>${error}</dd>
-         <dt>While Loading</dt>
-         <dd>${src}</dd>
-        `,
+        render({
+          Error: error,
+          "While Loading": src
+        }),
         container
       )
     );

@@ -1,5 +1,8 @@
 import { prepareTemplate } from "./template.js";
 import { loadJSON } from "./json-element.js";
+import { Auth, Observer } from "@calpoly/mustang";
+import "./restful-form.js";
+import "./input-array.js";
 
 export class ProfileViewElement extends HTMLElement {
   static observedAttributes = ["src", "mode"];
@@ -47,7 +50,7 @@ export class ProfileViewElement extends HTMLElement {
     section {
       display: grid;
       grid-template-columns: [key] 1fr [value] 3fr [controls] 1fr [end];
-      gap: var(--size-spacing-medium) var(--size-spacing-xlarge);
+      gap: var(--margin-size-small) var(--margin-size-med);
       align-items: end;
     }
     h1 {
@@ -91,7 +94,7 @@ export class ProfileViewElement extends HTMLElement {
       display: grid;
       grid-column: key / end;
       grid-template-columns: subgrid;
-      gap: 0 var(--size-spacing-xlarge);
+      gap: 0 var(--margin-size-med);
       align-items: baseline;
     }
     restful-form[src] + dl {
@@ -109,7 +112,7 @@ export class ProfileViewElement extends HTMLElement {
     ::slotted(ul) {
       list-style: none;
       display: flex;
-      gap: var(--size-spacing-medium);
+      gap: var(--margin-size-small);
     }
   `;
 
@@ -135,43 +138,41 @@ export class ProfileViewElement extends HTMLElement {
       </nav>
       <restful-form>
         <label>
-            <span>Username</span>
-            <input name="id" disabled />
+          <span>Username</span>
+          <input name="id"/>
         </label>
         <label>
-            <span>Name</span>
-            <input name="name" />
+          <span>Name</span>
+          <input name="name" />
         </label>
         <label>
-            <span>Email</span>
-            <input name="email" />
+          <span>Email</span>
+          <input name="email" />
         </label>
         <label>
-            <span>Address</span>
-            <input name="address" />
+          <span>Address</span>
+          <input name="address" />
         </label>
         <label>
-            <span>Groups</span>
-            <input-array name="groups">
+          <span>Groups</span>
+          <input-array name="groups">
             <span slot="label-add">Add a group</span>
-            </input-array>
+          </input-array>
         </label>
         <label>
-            <span>Festivals</span>
-            <input-array name="festivals">
+          <span>Festivals</span>
+          <input-array name="festivals">
             <span slot="label-add">Add a festival</span>
-            </input-array>
+          </input-array>
         </label>
-        <label>
-            <span>Avatar</span>
-            <input name="avatar" />
-        </label>
-    </restful-form>
+      </restful-form>
       <dl>
         <dt>Username</dt>
         <dd><slot name="id"></slot></dd>
         <dt>Name</dt>
         <dd><slot name="name"></slot></dd>
+        <dt>Email</dt>
+        <dd><slot name="email"></slot></dd>
         <dt>Address</dt>
         <dd><slot name="address"></slot></dd>
         <dt>Groups</dt>
@@ -228,11 +229,39 @@ export class ProfileViewElement extends HTMLElement {
     this.addEventListener("restful-form:updated", (event) => {
       console.log("Updated a profile", event.detail);
       this.mode = "view";
-      loadJSON(this.src, this, renderSlots);
+      console.log("LOading JSON", this.authorization);
+      loadJSON(this.src, this, renderSlots, this.authorization);
     });
   }
 
-  connectedCallback() {}
+  _authObserver = new Observer(this, "festivous:auth");
+
+  get authorization() {
+    console.log("Authorization for user, ", this._user);
+    return (
+      this._user?.authenticated && {
+        Authorization: `Bearer ${this._user.token}`
+      }
+    );
+  }
+
+  connectedCallback() {
+    this._authObserver.observe().then((obs) => {
+      obs.setEffect(({ user }) => {
+        console.log("Setting user as effect of change", user);
+        this._user = user;
+        if (this.src) {
+          console.log("LOading JSON", this.authorization);
+          loadJSON(
+            this.src,
+            this,
+            renderSlots,
+            this.authorization
+          );
+        }
+      })
+    })
+  }
 
   attributeChangedCallback(name, oldValue, newValue) {
     console.log(
@@ -241,9 +270,18 @@ export class ProfileViewElement extends HTMLElement {
     );
     switch (name) {
       case "src":
-        if (newValue && this.mode !== "new") {
-          console.log("Loading JSON");
-          loadJSON(this.src, this, renderSlots);
+        if (
+          newValue &&
+          this.mode !== "new" &&
+          this.authorization
+        ) {
+          console.log("Loading JSON", this.authorization);
+          loadJSON(
+            this.src,
+            this,
+            renderSlots,
+            this.authorization
+          );
         }
         break;
       case "mode":

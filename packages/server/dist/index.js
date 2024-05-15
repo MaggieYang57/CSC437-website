@@ -25,12 +25,19 @@ var import_express = __toESM(require("express"));
 var import_profiles = __toESM(require("./routes/profiles"));
 var import_mongo = require("./services/mongo");
 var import_auth = __toESM(require("./routes/auth"));
+var import_path = __toESM(require("path"));
 (0, import_mongo.connect)("festivous-cluster");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
 const staticDir = process.env.STATIC || "public";
+const nodeModules = import_path.default.resolve(
+  __dirname,
+  "../../../node_modules"
+);
+console.log("Serving NPM packages from", nodeModules);
 app.use(import_express.default.static(staticDir));
 app.use(import_express.default.json());
+app.use("/node_modules", import_express.default.static(nodeModules));
 app.use("/auth", import_auth.default);
 app.use("/api/profiles", import_auth.authenticateUser, import_profiles.default);
 app.get("/hello", (req, res) => {

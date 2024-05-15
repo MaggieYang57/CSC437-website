@@ -17,19 +17,6 @@ const ProfileSchema = new Schema<Profile>(
 
 const ProfileModel = model<Profile>("Profile", ProfileSchema);
 
-// let profiles: Array<Profile> = [
-//   {
-//     id: "bonnie",
-//     name: "Bonnie Brown",
-//     email: "bonnie@calpoly.edu",
-//     address: "Oakland, CA",
-//     groups: ['Best Group Ever', 'MS Squad'],
-//     rendezvous: ['Coachella temp'],
-//     festivals: ['Coachella_2024, EDCLV_2024'],
-//     avatar: "/data/avatars/Blaze Pasquale.png"
-//   }
-// ];
-
 function index(): Promise<Profile[]> {
   return ProfileModel.find();
 }
