@@ -191,7 +191,7 @@ export class ProfileViewElement extends HTMLElement {
 
   constructor() {
     super();
-
+    console.log('made profile')
     this.attachShadow({ mode: "open" }).appendChild(
       ProfileViewElement.template.cloneNode(true)
     );
@@ -232,6 +232,7 @@ export class ProfileViewElement extends HTMLElement {
       console.log("LOading JSON", this.authorization);
       loadJSON(this.src, this, renderSlots, this.authorization);
     });
+    
   }
 
   _authObserver = new Observer(this, "festivous:auth");
@@ -251,7 +252,7 @@ export class ProfileViewElement extends HTMLElement {
         console.log("Setting user as effect of change", user);
         this._user = user;
         if (this.src) {
-          console.log("LOading JSON", this.authorization);
+          console.log("Loading JSON", this.authorization);
           loadJSON(
             this.src,
             this,

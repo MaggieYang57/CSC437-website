@@ -38,19 +38,7 @@
     </script>
 </head>
   <body>
-    <header>
-        <nav class='nav'>
-          <a href="/index.html" class="logo">FESTIVOUS</a>
-          <a href="/festival.html">FESTIVALS</a>
-          <a href="/rendezvous.html">RENDEZVOUS</a>
-          <a href="/group.html">GROUPS</a>
-          <a href="/login.html" class="right">PROFILE</a>
-          <a href="#"
-            onclick="relayEvent(event, 'auth:message', ['auth/signout'])">
-            Sign out
-            </a>
-        </nav>
-    </header>
+    <nav-header></nav-header>
     <mu-auth provides="festivous:auth" redirect="../login.html">
         <main>
             <profile-view src="/api/profiles/bonnie"> </profile-view>

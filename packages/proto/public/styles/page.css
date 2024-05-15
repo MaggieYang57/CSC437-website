@@ -67,25 +67,6 @@ input {
     margin-top: var(--margin-size-med);
 }
 
-.nav{
-    display: block;
-
-    a {
-        padding: var(--body-margin);
-    }
-
-    .logo {
-        font-family: "Prompt", sans-serif;
-        font-weight: var(--font-weight-xlarge);
-        font-size: var(--font-size-large);
-    }
-
-    .right{
-        float: right;
-        margin-top: var(--margin-size-neg);
-    }
-}
-
 .landing {
     margin: var(--margin-size-med) 0;
 }
