@@ -16,14 +16,14 @@ export class RestfulFormElement extends HTMLElement {
     <template>
       <form autocomplete="off">
         <slot></slot>
-        <slot><button type="submit">Submit</button></slot>
+        <slot><button type="submit" class="submit">Submit</button></slot>
       </form>
       <slot name="delete"></slot>
       <style>
         form {
           display: grid;
-          gap: var(--margin-size-small);
-          grid-template-columns: [start] 1fr [label] 1fr [input] 3fr 1fr [end];
+          align-items: baseline; 
+          font-size: var(--font-size-med);
         }
         ::slotted(label) {
           display: grid;
@@ -31,9 +31,30 @@ export class RestfulFormElement extends HTMLElement {
           grid-template-columns: subgrid;
           gap: var(--margin-size-small);
         }
+        button {
+          border-radius: var(--border-radius-large);
+          border-width: var(--line-width);
+          border-color: var(--color-font-primary);
+          border-style: solid;
+          color: var(--color-font-primary);
+          background-color: transparent;
+          padding: var(--button-padding);
+          box-shadow: none;
+          margin: var(--margin-size-small) auto;
+          font-size: var(--font-size-body);
+          cursor: pointer;
+          width: var(--card-auth-width);
+          height: auto;
+          transition: var(--transition-default);
+        }      
         button[type="submit"] {
           grid-column: input;
           justify-self: start;
+        }
+        button:hover {
+          background-color: var(--color-font-primary);
+          color: var(--color-background-primary);
+          border-color: var(--color-background-primary);
         }
       </style>
     </template>

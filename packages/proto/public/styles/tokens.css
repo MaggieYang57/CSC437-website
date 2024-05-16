@@ -5,6 +5,7 @@
     --margin-size-small: 10px;
     --margin-size-med: 30px;
     --margin-size-large: 50px;
+    --margin-size-large: 100px;
 
     --font-size-body: 1rem;
     --font-size-summary: 4vw;
@@ -39,6 +40,7 @@
     --button-padding: 5px 15px;
 
     --card-width: 60vw;
+    --card-auth-width: 40vw;
     --card-height: 40vh;
     --container-width: 70%;
     --picture-width: 20vw;

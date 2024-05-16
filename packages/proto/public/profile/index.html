@@ -31,9 +31,11 @@
     <script type="module" src="/js/nav-header.js"></script>
     <script type="module">
         document.addEventListener('auth:message', (event) => {
-            console.log(event.detail)
-            localStorage.removeItem('mu:auth:jwt');
-            location.reload()
+            if (event.detail == 'auth/signout') {
+                console.log(event.detail)
+                localStorage.removeItem('mu:auth:jwt');
+                location.reload()
+            }
         });
     </script>
 </head>
@@ -42,6 +44,10 @@
     <mu-auth provides="festivous:auth" redirect="../login.html">
         <main>
             <profile-view src="/api/profiles/bonnie"> </profile-view>
+            <button class="signout"
+                onclick="relayEvent(event, 'auth:message', ['auth/signout'])">
+                Sign out
+            </button>
         </main>
     </mu-auth>
   </body>

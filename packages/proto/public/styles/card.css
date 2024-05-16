@@ -20,6 +20,7 @@ drop-down {
 
 .card {
     box-shadow: var(--box-shadow-dark);
+    background-color: var(--color-font-primary);
     color: var(--color-background-primary);
     display: flex;
     margin: var(--margin-size-med) auto;
@@ -33,6 +34,19 @@ drop-down {
 }
 .card:hover {
     box-shadow: var(--box-shadow-light);
+}
+
+.auth-card {
+    margin: var(--margin-size-large) auto;
+    width: var(--card-auth-width);
+    height: auto;
+
+    span {
+        margin-top: var(--margin-size-med);
+    }
+    input {
+        margin-top: var(--margin-size-small);
+    }
 }
 
 .container {

@@ -12,11 +12,7 @@ export class NavHeaderElement extends HTMLElement {
                 <a href="/festival.html">FESTIVALS</a>
                 <a href="/rendezvous.html">RENDEZVOUS</a>
                 <a href="/group.html">GROUPS</a>
-                <a href="/login.html" class="right">PROFILE</a>
-                <a href="#"
-                    onclick="relayEvent(event, 'auth:message', ['auth/signout'])">
-                    Sign out
-                    </a>
+                <a href="/login.html" class="right" id="profile-link">PROFILE</a>
             </nav>
         </header>
       <style>
@@ -53,6 +49,10 @@ export class NavHeaderElement extends HTMLElement {
     this.attachShadow({ mode: "open" }).appendChild(
         NavHeaderElement.template.cloneNode(true)
     );
+    if (localStorage.getItem('mu:auth:jwt')) {
+        console.log('hereeee')
+        this.shadowRoot.querySelector("#profile-link").setAttribute("href", "/profile");
+    }
   }
 
   _authObserver = new Observer(this, "festivous:auth");

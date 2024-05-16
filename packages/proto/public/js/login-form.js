@@ -13,7 +13,8 @@ export class LoginFormElement extends HTMLElement {
 
   get next() {
     let query = new URLSearchParams(document.location.search);
-    return query.get("next");
+    //would be http://localhost:3000/login.html?next=./profile/ to work
+    return "./profile/";
   }
 
   constructor() {
