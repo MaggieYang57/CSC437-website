@@ -34,7 +34,7 @@
             if (event.detail == 'auth/signout') {
                 console.log(event.detail)
                 localStorage.removeItem('mu:auth:jwt');
-                location.reload()
+                window.location.href("../login.html");
             }
         });
     </script>
