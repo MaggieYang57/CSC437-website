@@ -1,0 +1,97 @@
+body {
+    margin: var(--body-margin);
+    background-color: var(--color-background-primary);
+    color: var(--color-font-primary);
+    font-family: "Pontano Sans", sans-serif;
+    font-weight: var(--font-weight-body);
+    font-size: var(--font-size-body);
+    letter-spacing: var(--line-width);
+}
+
+h1 {
+    font-family: "Prompt", sans-serif;
+    font-weight: var(--font-weight-xlarge);
+    font-size: var(--font-size-xxlarge);
+}
+
+h2 {
+    font-family: "Prompt", sans-serif;
+    font-weight: var(--font-weight-xlarge);
+    font-size: var(--font-size-xlarge);
+}
+
+h3 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: var(--font-weight-large);
+    font-size: var(--font-size-large);
+}
+
+a {
+    font-family: "Pontano Sans", sans-serif;
+    color: var(--color-font-primary);
+    font-weight: var(--font-weight-body);
+}
+
+button {
+    border-radius: var(--border-radius-large);
+    border-width: var(--line-width);
+    border-color: var(--color-background-primary);
+    border-style: solid;
+    background-color: transparent;
+    padding: var(--button-padding);
+    box-shadow: none;
+    margin-top: var(--margin-size-small);
+    font-size: var(--font-size-body);
+
+    &.add-button {
+        border-color: var(--color-font-primary);
+        color: var(--color-font-primary);
+        margin: var(--margin-size-med) auto;
+        left: auto;
+        right: auto;
+        display: block;
+        width: var(--card-width);
+        height: auto;
+        transition: var(--transition-default);
+        font-size: var(--font-size-large);
+    }
+    &.add-button:hover {
+        background-color: var(--color-font-primary);
+        color: var(--color-background-primary);
+        border-color: var(--color-background-primary);
+    }
+
+    &.signout {
+        color: var(--color-font-primary);
+        cursor: pointer;
+        margin-left: var(--margin-size-large);
+        float: right;
+    }
+}
+input {
+    margin-top: var(--margin-size-med);
+}
+
+.landing {
+    margin: var(--margin-size-med) 0;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap);
+    margin: var(--margin-size-small) var(--margin-size-neg);
+}
+
+.centered{
+    text-align: center;
+    margin-top: var(--margin-size-large);
+}
+
+.profile-pic{
+    box-shadow: var(--box-shadow-dark);
+    margin: var(--body-margin);
+    width: var(--picture-width);
+    height: var(--picture-width);
+    border-radius: var(--border-radius-med);
+}

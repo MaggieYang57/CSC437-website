@@ -1,0 +1,121 @@
+drop-down {
+    .line {
+        position: absolute;
+        width: var(--line-width); 
+        height: var(--line-height); 
+        background-color: black; 
+    }
+    
+    .loaded-content {
+        margin: var(--margin-size-small) 0;
+        padding-left: var(--margin-size-small);
+        h1 {
+            font-size: var(--font-size-xlarge);
+        }
+        p {
+            white-space: pre;
+        }
+    }
+}
+
+.card {
+    box-shadow: var(--box-shadow-dark);
+    background-color: var(--color-font-primary);
+    color: var(--color-background-primary);
+    display: flex;
+    margin: var(--margin-size-med) auto;
+    width: var(--card-width);
+    height: auto;
+    border-radius: var(--border-radius-med);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.card:hover {
+    box-shadow: var(--box-shadow-light);
+}
+
+.auth-card {
+    margin: var(--margin-size-large) auto;
+    width: var(--card-auth-width);
+    height: auto;
+
+    span {
+        margin-top: var(--margin-size-med);
+    }
+    input {
+        margin-top: var(--margin-size-small);
+    }
+}
+
+.container {
+    padding: var(--margin-size-small) var(--margin-size-med);
+    background-color: var(--overlay-color-xlight);
+    border-radius: var(--border-radius-med);
+    transition: transform 4s ease-in-out; 
+    position: relative;
+    display: grid;
+    width: var(--container-width);
+    left: 0;
+}
+
+.dates{
+    font-size: var(--font-size-large);
+}
+
+.header {
+    position: relative;
+    width: var(--full-width);
+    h2 {
+        float:left;
+    }
+}
+
+
+.summary-card {
+    box-shadow: var(--box-shadow-dark);
+    height: var(--card-height);
+    text-align: right;
+    border-radius: var(--border-radius-med);
+    cursor: pointer;
+
+    h2{
+        bottom: 0;
+        right: 0;
+        margin: 0;
+        position: absolute;
+        font-size: var(--font-size-summary);
+    }
+    &.first {
+        background-image: url("../images/ferris-wheel.jpg");
+    }
+    &.second {
+        background-image: url("../images/stage.jpg");
+        background-position: center;
+    }
+    &.third {
+        background-image: url("../images/group.jpg");
+        background-position: center;
+    }
+}
+
+.overlay {
+    z-index: 2;
+    width: var(--full-width);
+    height: var(--full-width);
+    position: relative;
+    background-color: var(--overlay-color);
+    border-radius: var(--border-radius-med);
+    overflow: hidden;
+    color: var(--color-font-primary);
+}
+.festival {
+    padding: var(--margin-size-small);
+    background-color: var(--overlay-color-light);
+    color: var(--color-background-primary);
+}
+
+.names {
+    font-weight: var(--font-weight-med);
+}

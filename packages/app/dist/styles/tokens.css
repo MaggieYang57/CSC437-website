@@ -1,0 +1,56 @@
+:root {
+    --full-width: 100%;
+    --body-margin: 1rem;
+    --margin-size-neg: -5px;
+    --margin-size-small: 10px;
+    --margin-size-med: 30px;
+    --margin-size-large: 50px;
+    --margin-size-large: 100px;
+
+    --font-size-body: 1rem;
+    --font-size-summary: 4vw;
+    --font-size-med: 1.5rem;
+    --font-size-large: 2rem;
+    --font-size-xlarge: 3rem;
+    --font-size-xxlarge: 4rem;
+
+    --font-weight-body: 300;
+    --font-weight-med: 400;
+    --font-weight-large: 500;
+    --font-weight-xlarge: 800;
+
+    --color-background-primary: #2E2E2E;
+    --color-font-primary: #E6E6E6;
+    --box-shadow-dark: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+    --box-shadow-light: 0px 0px 16px 5px rgba(255, 255, 255, 0.5);
+    --overlay-color:  rgba(0, 0, 0, 0.3);
+    --overlay-color-light:  rgba(255, 255, 255, 0.6);
+    --overlay-color-xlight: rgba(255, 255, 255, 0.9);
+    
+    --color-card-first: #f6e4ffea;
+    --color-card-second: #9bc6ffc9;
+    --color-card-third: #fd9896da;
+
+    --border-radius-small: 5px;
+    --border-radius-med: 10px;
+    --border-radius-large: 15px;
+    --line-width: 1px;
+    --line-height: 90%;
+
+    --button-padding: 5px 15px;
+
+    --card-width: 60vw;
+    --card-auth-width: 40vw;
+    --card-height: 40vh;
+    --container-width: 70%;
+    --picture-width: 20vw;
+    --card-gap: 10px;
+
+    --transition-default: 0.2s;
+
+    body.light-mode {
+        --color-background-primary: #E6E6E6;
+        --color-font-primary: #2E2E2E;
+        --overlay-color:  rgba(255, 255, 255, 0.5);
+    }
+}

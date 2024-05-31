@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "cross-env STATIC=../proto/public npx nodemon",
     "build": "npx etsc",
-    "start": "cross-env STATIC=../proto/public node dist/index.js",
+    "start": "npm run build && npm run start:node",
+    "start:node": "node dist/index.js",
+    "start:app": "cross-env STATIC=../app/dist npm run start",
+    "start:proto": "cross-env STATIC=../proto/public npm run start",
     "check": "npx tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
