@@ -19,17 +19,20 @@ export class NavHeaderElement extends LitElement {
             <a href="/rendezvous.html">RENDEZVOUS</a>
             <a href="/group.html">GROUPS</a>
             <a href="/login.html" class="right" id="profile-link">PROFILE</a>
-            <details class="right">
-                <summary name="greeting" slot="actuator"
-                    >HELLO, ${this.username}</summary
-                >
-                <p @change=${toggleLightMode}>
-                    <input type="checkbox" autocomplete="off" />
-                    LIGHT MODE
-                </p>
-                <p href="/profile">PROFILE</p>
-                <p href="#" @click=${signOutUser}>SIGN OUT</p>
-            </details>
+            <drop-down class="right">
+                <a name="greeting" slot="actuator"
+                    >HELLO, ${this.username}</a>
+                <ul>
+                    <li>
+                    <label @change=${toggleLightMode}>
+                        <input type="checkbox" autocomplete="off" />
+                        LIGHT MODE
+                    </label>
+                    </li>
+                <li><a href="/profile">PROFILE</a></li>
+                <li><a href="#" @click=${signOutUser}>SIGN OUT</a></li>
+                </ul>
+            </drop-down>
         </nav>
     </header>
     `;
@@ -41,13 +44,14 @@ export class NavHeaderElement extends LitElement {
         }
         .nav{
             display: block;
-            a, summary {
+            a, drop-down {
                 padding: var(--body-margin);
                 font-family: "Pontano Sans", sans-serif;
                 text-decoration: none;
                 color: var(--color-font-primary);
                 font-weight: var(--font-weight-body);
                 font-size: var(--font-size-med);
+                cursor: pointer;
             }
             .logo {
                 font-family: "Prompt", sans-serif;
