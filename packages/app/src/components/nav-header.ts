@@ -14,7 +14,7 @@ export class NavHeaderElement extends LitElement {
     return html`
     <header>
         <nav class='nav'>
-            <a href="/index.html" class="logo">FESTIVOUS</a>
+            <a href="/" class="logo">FESTIVOUS</a>
             <a href="/festival.html">FESTIVALS</a>
             <a href="/rendezvous.html">RENDEZVOUS</a>
             <a href="/group.html">GROUPS</a>

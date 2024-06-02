@@ -21,9 +21,11 @@
     </script>  
   </head>
   <body>
+    <mu-history provides="festivous:history">
     <mu-auth provides="festivous:auth" redirect="./login.html">
       <mu-store provides="festivous:model">
         <nav-header></nav-header>
+        <mu-switch></mu-switch>
         <div class="landing">
           <h1>FESTIVOUS</h1>
           <h3>Stay Together, Experience Together</h3>
@@ -61,6 +63,7 @@
         </div>
       </mu-store>
     </mu-auth>
+    </mu-history>
   </body>
 </html>
 

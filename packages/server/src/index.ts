@@ -3,6 +3,7 @@ import profiles from "./routes/profiles";
 import { connect } from "./services/mongo";
 import auth, { authenticateUser } from "./routes/auth";
 import path from "path";
+import fs from "node:fs/promises";
 
 connect('festivous-cluster');
 const app = express();
@@ -17,7 +18,12 @@ console.log("Serving NPM packages from", nodeModules);
 app.use(express.static(staticDir));
 app.use(express.json());
 app.use("/node_modules", express.static(nodeModules));
-
+app.use("/app", (req: Request, res: Response) => {
+  const indexHtml = path.resolve(staticDir, "index.html");
+  fs.readFile(indexHtml, { encoding: "utf8" }).then((html) =>
+    res.send(html)
+  );
+});
 app.use("/auth", auth);
 app.use("/api/profiles", authenticateUser, profiles);
 
