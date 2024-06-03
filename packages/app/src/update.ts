@@ -8,11 +8,21 @@ export default function update(
   apply: Update.ApplyMap<Model>,
   user: Auth.User
 ) {
+  console.log('MESSAGE')
+  console.log(message)
   switch (message[0]) {
     case "profile/save":
       saveProfile(message[1], user).then((profile) =>
         apply((model) => ({ ...model, profile }))
-      );
+      )
+      .then(() => {
+        const { onSuccess } = message[1];
+        if (onSuccess) onSuccess();
+      })
+      .catch((error: Error) => {
+        const { onFailure } = message[1];
+        if (onFailure) onFailure(error);
+      });
       break;
     case "profile/select":
       selectProfile(message[1], user).then((profile) =>
@@ -32,12 +42,12 @@ export default function update(
 
 function saveProfile(
   msg: {
-    userid: string;
+    id: string;
     profile: Profile;
   },
   user: Auth.User
 ) {
-  return fetch(`/api/profiles/${msg.userid}`, {
+  return fetch(`/api/profiles/${msg.profile.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -56,10 +66,10 @@ function saveProfile(
 }
 
 function selectProfile(
-  msg: { userid: string },
+  msg: { id: string },
   user: Auth.User
 ) {
-  return fetch(`/api/profiles/${msg.userid}`, {
+  return fetch(`/api/profiles/${msg.id}`, {
     headers: Auth.headers(user)
   })
     .then((response: Response) => {
@@ -76,8 +86,8 @@ function selectProfile(
     });
 }
 
-function selectGroup(msg: { groupid: string }, user: Auth.User) {
-  return fetch(`/api/groups/${msg.groupid}`, {
+function selectGroup(msg: { id: string }, user: Auth.User) {
+  return fetch(`/api/groups/${msg.id}`, {
     headers: Auth.headers(user)
   })
     .then((response: Response) => {

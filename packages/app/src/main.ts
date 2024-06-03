@@ -10,6 +10,7 @@ import { Model, init } from "./model";
 import update from "./update";
 import { NavHeaderElement } from "./components/nav-header";
 import { ProfileViewElement } from "./views/profile-view";
+import { GroupViewerElement } from "./views/group-view";
 
 const routes = [
   // {
@@ -43,12 +44,6 @@ const routes = [
 ];
 
 define({
-  "mu-history": History.Provider,
-  "mu-switch": class AppSwitch extends Switch.Element {
-    constructor() {
-      super(routes, "festivous:history");
-    }
-  },
   "mu-auth": Auth.Provider,
   "mu-store": class AppStore extends Store.Provider<
     Model,
@@ -58,6 +53,13 @@ define({
       super(update, init, "festivous:auth");
     }
   },
+  "mu-history": History.Provider,
+  "mu-switch": class AppSwitch extends Switch.Element {
+    constructor() {
+      super(routes, "festivous:history", "festivous:auth");
+    }
+  },
   "nav-header": NavHeaderElement,
-  "profile-view": ProfileViewElement
+  "profile-view": ProfileViewElement,
+  "group-view": GroupViewerElement
 });

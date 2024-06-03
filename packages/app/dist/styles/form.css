@@ -9,10 +9,6 @@ form {
     display: contents;
   }
   
-  label > span {
-    grid-column-start: label;
-  }
-  
   label > input {
     grid-column: input / span 2;
   }

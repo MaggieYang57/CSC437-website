@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import profiles from "./routes/profiles";
+import groups from "./routes/groups"
 import { connect } from "./services/mongo";
 import auth, { authenticateUser } from "./routes/auth";
 import path from "path";
@@ -26,6 +27,7 @@ app.use("/app", (req: Request, res: Response) => {
 });
 app.use("/auth", auth);
 app.use("/api/profiles", authenticateUser, profiles);
+app.use("/api/groups", authenticateUser, groups);
 
 app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello, World");

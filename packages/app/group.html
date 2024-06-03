@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./styles/card.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pontano+Sans:wght@300..700&family=Prompt:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script type="module" src="/src/main"></script>
+    <script type="module">
+      import { define, Auth, Events } from "@calpoly/mustang";
+      import { NavHeaderElement } from "/src/components/nav-header";
+      import { KebabMenu } from "/src/components/kebab-menu";
+      
+      define({
+        "mu-auth": Auth.Provider,
+        "nav-header": NavHeaderElement,
+        "kebab-menu": KebabMenu
+      });
+      window.relayEvent = Events.relay;
+    </script>  
+  </head>
+  <body>
+    <mu-history provides="festivous:history">
+    <mu-auth provides="festivous:auth" redirect="./login.html">
+    <nav-header></nav-header>
+    <h1> GROUPS </h1>
+    <div class="card">
+      <div class="container" style="background-color: var(--color-card-first); width: 100%;">
+        <div class="header">
+          <h2>SLOmies</h2>
+          <kebab-menu>
+            <div>Edit Name</div>
+            <div>Add Member</div>
+            <div>Remove Member</div>
+          </kebab-menu>
+        </div>
+        <ul class="names">
+          <li>John Do</li>
+          <li>Mary Lee</li>
+          <li>Sophia Chen</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="container" style="background-color: var(--color-card-second); width: 100%;">
+          <div class="header">
+          <h2>Three Blind Mice</h2>
+          <kebab-menu>
+            <div>Edit Name</div>
+            <div>Add Member</div>
+            <div>Remove Member</div>
+          </kebab-menu>
+        </div>
+        <ul class="names">
+          <li>Remy Randeuto</li>
+          <li>Emily Mouserton</li>
+          <li>Stuart Lim </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="container" style="background-color: var(--color-card-third); width: 100%;">
+        <div class="header">
+          <h2>The Best Group</h2>
+          <kebab-menu>
+            <div>Edit Name</div>
+            <div>Add Member</div>
+            <div>Remove Member</div>
+          </kebab-menu>
+        </div>
+        <ul class="names">
+          <li>Maxine Ly</li>
+          <li>Irene Chen</li>
+          <li>Mona Makam</li>
+          <li>Bonnie Brown</li>
+        </ul>
+      </div>
+    </div>
+    <button class="add-button">ADD +</button>
+    <group-list></group-list>
+      <hr />
+    <group-adder></group-adder>
+    </mu-auth>
+    </mu-history>
+  </body>
+</html>

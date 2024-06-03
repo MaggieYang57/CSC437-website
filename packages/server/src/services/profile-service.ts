@@ -7,9 +7,6 @@ const ProfileSchema = new Schema<Profile>(
       name: { type: String, required: true, trim: true },
       email: { type: String, trim: true },
       address: { type: String, trim: true },
-      groups: [String],
-      rendezvous: [String],
-      festivals: [String],
       avatar: { type: String, required: true, trim: true}
     },
     { collection: "user_profiles" }

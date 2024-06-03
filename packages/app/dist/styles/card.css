@@ -40,12 +40,22 @@ drop-down {
     margin: var(--margin-size-large) auto;
     width: var(--card-auth-width);
     height: auto;
+    display: block;
 
-    span {
+    label span {
+        display: block;
+        width: 100%;
+        text-align: left;
         margin-top: var(--margin-size-med);
     }
+    
     input {
-        margin-top: var(--margin-size-small);
+        width: 100%; 
+        padding: var(--input-padding);
+    }
+
+    p {
+        margin-top: var(--margin-size-med);
     }
 }
 

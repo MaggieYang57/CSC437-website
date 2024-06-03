@@ -1,281 +1,257 @@
-import { define, View } from "@calpoly/mustang";
-import { css, html, LitElement } from "lit";
-import { property } from "lit/decorators.js";
-import { Profile } from "server/models";
-import { Msg } from "../messages";
-import { Model } from "../model";
-
-class ProfileViewer extends LitElement {
-  static styles = css`
-  :host {
-    --display-new-button: inline-block;
-    --display-edit-button: inline-block;
-    --display-close-button: none;
-    --display-delete-button: none;
-  }
-  :host([mode="edit"]) {
-    --display-new-button: none;
-    --display-edit-button: none;
-    --display-close-button: inline-block;
-    --display-delete-button: inline-block;
-  }
-  :host([mode="new"]) {
-    --display-new-button: none;
-    --display-edit-button: none;
-    --display-close-button: inline-block;
-  }
-  * {
-    margin: 0;
-    box-sizing: border-box;
-  }
-  section {
-    display: grid;
-    grid-template-columns: [key] 1fr [value] 3fr [controls] 1fr [end];
-    gap: var(--margin-size-small) var(--margin-size-med);
-    align-items: end;
-    margin: var(--margin-size-med);
-  }
-  h1 {
-    grid-row: 4;
-    grid-column: value;
-  }
-  slot[name="avatar"] {
-    display: block;
-    grid-row: 1/ span 4;
-  }
-  nav {
-    display: grid;
-    text-align: right;
-    margin-top: var(--margin-size-med);
-  }
-  nav > button {
-    border-radius: var(--border-radius-large);
-    border-width: var(--line-width);
-    border-style: solid;
-    border-color: var(--color-font-primary);
-    background-color: transparent;
-    padding: var(--button-padding);
-    box-shadow: none;
-    margin-top: var(--margin-size-small);
-    font-size: var(--font-size-body);
-    color: var(--color-font-primary);
-    transition: var(--transition-default);
-  }
-  nav > button:hover {
-    background-color: var(--color-font-primary);
-    color: var(--color-background-primary);
-    border-color: var(--color-background-primary);
-  }
-  nav > * {
-    grid-column: controls;
-    margin-bottom: var(--margin-size-med);
-  }
-  nav > .new {
-    display: var(--display-new-button);
-  }
-  nav > .edit {
-    display: var(--display-edit-button);
-  }
-  nav > .close {
-    display: var(--display-close-button);
-  }
-  nav > .delete {
-    display: var(--display-delete-button);
-  }
-  restful-form {
-    display: none;
-    grid-column: key / end;
-    margin: 0;
-  }
-  restful-form input{
-    grid-column: input;
-    margin-bottom: var(--margin-size-med);
-  }
-  restful-form[src] {
-    display: block;
-  }
-  dl {
-    display: grid;
-    grid-column: key / end;
-    grid-template-columns: subgrid;
-    gap: 0 var(--margin-size-med);
-    align-items: baseline;
-  }
-  restful-form[src] + dl {
-    display: none;
-  }
-  dt {
-    grid-column: key;
-    justify-self: end;
-    color: var(--color-accent);
-    font-family: var(--font-family-display);
-  }
-  dd {
-    grid-column: value;
-  }
-  ::slotted(ul) {
-    list-style: none;
-    display: flex;
-    gap: var(--margin-size-small);
-  }
-  `;
-
-  render() {
-    return html`
-    <section>
-    <slot name="avatar"></slot>
-    <h1><slot name="name"></slot></h1>
-      <restful-form>
-        <label>
-          <span>Username</span>
-          <input name="id"/>
-        </label>
-        <label>
-          <span>Name</span>
-          <input name="name" />
-        </label>
-        <label>
-          <span>Email</span>
-          <input name="email" />
-        </label>
-        <label>
-          <span>Address</span>
-          <input name="address" />
-        </label>
-      </restful-form>
-      <dl>
-        <dt>Username</dt>
-        <dd><slot name="id"></slot></dd>
-        <dt>Name</dt>
-        <dd><slot name="name"></slot></dd>
-        <dt>Email</dt>
-        <dd><slot name="email"></slot></dd>
-        <dt>Address</dt>
-        <dd><slot name="address"></slot></dd>
-      </dl>
-      <nav>
-        <button class="new"
-          onclick="relayEvent(event,'profile-view:new-mode')"
-        >New…</button>
-        <button class="edit"
-          onclick="relayEvent(event,'profile-view:edit-mode')"
-        >Edit</button>
-        <button class="close"
-          onclick="relayEvent(event,'profile-view:view-mode')"
-        >Close</button>
-        <button class="delete"
-          onclick="relayEvent(event,'profile-view:delete')"
-          >Delete</button
-        >
-      </nav>
-    </section>
-    `;
-  }
-}
-
-class ProfileAvatarElement extends LitElement {
-  @property()
-  color: string = "white";
-
-  @property()
-  src?: string;
-
-  render() {
-    return html`
-      <div
-        class="avatar"
-        style="
-        ${this.color
-        ? `--avatar-backgroundColor: ${this.color};`
-        : ""}
-        ${this.src
-        ? `background-image: url('${this.src}');`
-        : ""}
-      "></div>
-    `;
-  }
-
-  static styles = css`
-    :host {
-        display: contents;
-        --avatar-backgroundColor: var(--color-accent);
-        --avatar-size: 100px;
+import {
+    define,
+    Form,
+    History,
+    InputArray,
+    View
+  } from "@calpoly/mustang";
+  import { css, html, LitElement } from "lit";
+  import { property, state } from "lit/decorators.js";
+  import { Profile } from "server/models";
+  import { ProfileAvatarElement } from "../components/profile-avatar";
+  import { Msg } from "../messages";
+  import { Model } from "../model";
+  
+  const gridStyles = css`
+    slot[name="avatar"] {
+      display: block;
+      grid-row: 1 / span 4;
     }
-    .avatar {
-        grid-column: key;
-        justify-self: end;
-        position: relative;
-        width: var(--avatar-size);
-        aspect-ratio: 1;
-        background-color: var(--avatar-backgroundColor);
-        background-size: cover;
-        border-radius: 50%;
-        text-align: center;
-        line-height: var(--avatar-size);
-        font-size: calc(0.66 * var(--avatar-size));
-        font-family: var(--font-family-display);
-        color: var(--color-link-inverted);
-        overflow: hidden;
+    nav {
+      display: contents;
+      text-align: right;
+    }
+    nav > * {
+      grid-column: controls;
     }
   `;
-}
-
-export class ProfileViewElement extends View<Model, Msg> {
-  static uses = define({
-    "profile-viewer": ProfileViewer,
-    "profile-avatar": ProfileAvatarElement
-  });
-
-  @property({ attribute: "user-id", reflect: true })
-  userid = "";
-
-  @property()
-  get profile(): Profile | undefined {
-    return this.model.profile;
+  
+  class ProfileViewer extends LitElement {
+    @property()
+    username?: string;
+  
+    render() {
+        console.log(this.username);
+      return html`
+        <section>
+          <slot name="avatar"></slot>
+          <h1><slot name="name"></slot></h1>
+          <nav>
+            <a href="${this.username}/edit" class="edit">Edit</a>
+          </nav>
+          <dl>
+            <dt>Username</dt>
+            <dd><slot name="id"></slot></dd>
+            <dt>Email</dt>
+            <dd><slot name="email"></slot></dd>
+            <dt>Address</dt>
+            <dd><slot name="address"></slot></dd>
+          </dl>
+        </section>
+      `;
+    }
+  
+    static styles = [
+      gridStyles,
+      css`
+        * {
+          margin: 0;
+          box-sizing: border-box;
+        }
+        section {
+          display: grid;
+          grid-template-columns: [key] 1fr [value] 3fr [controls] 1fr [end];
+          gap: var(--size-spacing-medium)
+            var(--size-spacing-xlarge);
+          align-items: end;
+        }
+        h1 {
+          grid-row: 4;
+          grid-column: value;
+        }
+        dl {
+          display: grid;
+          grid-column: key / end;
+          grid-template-columns: subgrid;
+          gap: 0 var(--size-spacing-xlarge);
+          align-items: baseline;
+        }
+        dt {
+          grid-column: key;
+          justify-self: end;
+          color: var(--color-accent);
+          font-family: var(--font-family-display);
+        }
+        dd {
+          grid-column: value;
+        }
+        ::slotted(ul) {
+          list-style: none;
+          display: flex;
+          gap: var(--size-spacing-medium);
+        }
+      `
+    ];
   }
-
-  constructor() {
-    super("festivous:model");
+  
+  class ProfileEditor extends LitElement {
+    static uses = define({
+      "mu-form": Form.Element,
+      "input-array": InputArray.Element
+    });
+    @property()
+    username?: string;
+  
+    @property({ attribute: false })
+    init?: Profile;
+  
+    render() {
+      return html`
+        <section>
+          <slot name="avatar"></slot>
+          <h1><slot name="name"></slot></h1>
+          <nav>
+            <a class="close" href="../profile">Close</a>
+            <button class="delete">Delete</button>
+          </nav>
+          <mu-form .init=${this.init}>
+            <label>
+              <span>Username</span>
+              <input disabled name="id" />
+            </label>
+            <label>
+              <span>Name</span>
+              <input name="name" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input name="email" />
+            </label>
+            <label>
+              <span>Address</span>
+              <input name="address" />
+            </label>
+            <label>
+              <span>Avatar</span>
+              <input name="avatar" />
+            </label>
+          </mu-form>
+        </section>
+      `;
+    }
+  
+    static styles = [
+      gridStyles,
+      css`
+        mu-form {
+          grid-column: key / end;
+        }
+        mu-form input {
+          grid-column: input;
+        }
+      `
+    ];
   }
-
-  attributeChangedCallback(
-    name: string,
-    oldValue: string,
-    newValue: string
-  ) {
-    super.attributeChangedCallback(name, oldValue, newValue);
-    if (
-      name === "user-id" &&
-      oldValue !== newValue &&
-      newValue
+  
+  export class ProfileViewElement extends View<Model, Msg> {
+    static uses = define({
+      "profile-viewer": ProfileViewer,
+      "profile-editor": ProfileEditor,
+      "profile-avatar": ProfileAvatarElement
+    });
+  
+    @property({ type: Boolean, reflect: true })
+    edit = false;
+  
+    @property({ attribute: "user-id", reflect: true })
+    userid = "";
+  
+    @state()
+    get profile(): Profile | undefined {
+      return this.model.profile;
+    }
+  
+    constructor() {
+      super("festivous:model");
+      this.addEventListener("mu-form:submit", (event) =>
+        this._handleSubmit(event as Form.SubmitEvent<Profile>)
+      );
+    }
+  
+    attributeChangedCallback(
+      name: string,
+      oldValue: string,
+      newValue: string
     ) {
-      console.log("Profiler Page:", newValue);
-      this.dispatchMessage([
-        "profile/select",
-        { userid: newValue }
-      ]);
+      super.attributeChangedCallback(name, oldValue, newValue);
+      if (
+        name === "user-id" &&
+        oldValue !== newValue &&
+        newValue
+      ) {
+        console.log("Profiler Page:", newValue);
+        this.dispatchMessage([
+          "profile/select",
+          { id: newValue }
+        ]);
+      }
     }
-  }
-
-  render() {
-    const {
-      avatar,
-      name,
-      id,
-      email,
-      address,
-    } = this.profile || {};
-
-    return html`
-      <profile-viewer>
+  
+    render() {
+      const {
+        avatar,
+        name,
+        id,
+        address,
+      } = this.profile || {};
+      const initial = (name || id || "?").slice(
+        0,
+        1
+      );
+  
+      const fields = html`
         <profile-avatar
           slot="avatar"
-          src=${avatar}></profile-avatar>
-        <span slot="name">${name}</span>
-        <span slot="id">${id}</span>
-        <span slot="email">${email}</span>
-        <span slot="address">${address}</span>
-      </profile-viewer>
-    `;
-  }
+          src=${avatar}
+          initial=${initial}></profile-avatar>
+      `;
+  
+      console.log(id)
+      return this.edit
+        ? html`
+            <profile-editor
+              username=${id}
+              .init=${this.profile}
+              @mu-form:submit=${(
+          event: Form.SubmitEvent<Profile>
+        ) => this._handleSubmit(event)}>
+              ${fields}
+            </profile-editor>
+          `
+        : html`
+            <profile-viewer username=${id}>
+              ${fields}
+              <span slot="name">${name}</span>
+              <span slot="userid">${id}</span>
+              <span slot="address">${address}</span>
+            </profile-viewer>
+          `;
+    }
+  
+    _handleSubmit(event: Form.SubmitEvent<Profile>) {
+      console.log("Handling submit of mu-form");
+      this.dispatchMessage([
+        "profile/save",
+        {
+          id: this.id,
+          profile: event.detail,
+          onSuccess: () =>
+            History.dispatch(this, "history/navigate", {
+              href: `/app/profile/${event.detail.id}`
+            }),
+          onFailure: (error: Error) =>
+            console.log("ERROR:", error)
+        }
+      ]);
+    }
 }

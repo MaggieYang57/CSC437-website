@@ -1,10 +1,10 @@
-import { Auth, define, DropdownElement, Events, Observer } from "@calpoly/mustang";
+import { Auth, define, Dropdown, Events, Observer } from "@calpoly/mustang";
 import { LitElement, css, html } from "lit";
 import { property } from "lit/decorators.js";
 
 export class NavHeaderElement extends LitElement {
     static uses = define({
-        "drop-down": DropdownElement
+        "drop-down": Dropdown.Element
       });
     
     @property()
@@ -18,7 +18,6 @@ export class NavHeaderElement extends LitElement {
             <a href="/festival.html">FESTIVALS</a>
             <a href="/rendezvous.html">RENDEZVOUS</a>
             <a href="/group.html">GROUPS</a>
-            <a href="/login.html" class="right" id="profile-link">PROFILE</a>
             <drop-down class="right">
                 <a name="greeting" slot="actuator"
                     >HELLO, ${this.username}</a>
@@ -29,7 +28,7 @@ export class NavHeaderElement extends LitElement {
                         LIGHT MODE
                     </label>
                     </li>
-                <li><a href="/profile">PROFILE</a></li>
+                <li><a href="/app/profile/${this.username}">PROFILE</a></li>
                 <li><a href="#" @click=${signOutUser}>SIGN OUT</a></li>
                 </ul>
             </drop-down>
@@ -87,6 +86,7 @@ function toggleLightMode(ev: InputEvent) {
   const checked = target.checked;
 
   Events.relay(ev, "light-mode", { checked });
+  document.body.classList.toggle("light-mode", checked);
 }
 
 function signOutUser(ev: Event) {

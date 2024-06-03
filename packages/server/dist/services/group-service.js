@@ -16,57 +16,50 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var profile_service_exports = {};
-__export(profile_service_exports, {
-  default: () => profile_service_default
+var group_service_exports = {};
+__export(group_service_exports, {
+  default: () => group_service_default
 });
-module.exports = __toCommonJS(profile_service_exports);
+module.exports = __toCommonJS(group_service_exports);
 var import_mongoose = require("mongoose");
-const ProfileSchema = new import_mongoose.Schema(
+const GroupSchema = new import_mongoose.Schema(
   {
     id: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
-    email: { type: String, trim: true },
-    address: { type: String, trim: true },
-    avatar: { type: String, required: true, trim: true }
+    people: [{ type: import_mongoose.Schema.Types.ObjectId, ref: "Profile" }]
   },
-  { collection: "user_profiles" }
+  { collection: "group_collection" }
 );
-const ProfileModel = (0, import_mongoose.model)("Profile", ProfileSchema);
+const GroupModel = (0, import_mongoose.model)("Group", GroupSchema);
 function index() {
-  return ProfileModel.find();
+  return GroupModel.find();
 }
-function get(userid) {
-  return ProfileModel.find({ "id": userid }).then((list) => {
-    if (list.length === 0) {
-      throw new Error(`${userid} Not Found`);
-    }
-    return list[0];
-  }).catch((err) => {
-    throw new Error(`Error fetching profile for ${userid}: ${err.message}`);
+function get(id) {
+  return GroupModel.findById(id).populate("people").then((doc) => doc).catch((err) => {
+    throw `${id} Not Found`;
   });
 }
-function create(profile) {
-  const p = new ProfileModel(profile);
+function create(group) {
+  const p = new GroupModel(group);
   return p.save();
 }
-function update(userid, profile) {
-  return ProfileModel.findOne({ "id": userid }).then((found) => {
+function update(id, group) {
+  return GroupModel.findOne({ "id": id }).then((found) => {
     if (!found)
-      throw `${userid} Not Found`;
+      throw `${id} Not Found`;
     else
-      return ProfileModel.findByIdAndUpdate(
+      return GroupModel.findByIdAndUpdate(
         found._id,
-        profile,
+        group,
         {
           new: true
         }
       );
   }).then((updated) => {
     if (!updated)
-      throw `${userid} not updated`;
+      throw `${id} not updated`;
     else
       return updated;
   });
 }
-var profile_service_default = { index, get, create, update };
+var group_service_default = { index, get, create, update };

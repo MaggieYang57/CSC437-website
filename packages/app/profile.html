@@ -21,11 +21,11 @@
         </script>  
     </head>
   <body>
-    <mu-auth provides="festivous:auth" redirect="./login.html">
+    <mu-auth provides="festivous:auth" redirect="./login">
         <mu-store provides="festivous:model">
         <nav-header></nav-header>
         <main>
-            <profile-view src="/api/profiles/bonnie"> </profile-view>
+            <profile-view user-id="bonnie"> </profile-view>
             <button class="signout"
                 onclick="relayEvent(event, 'auth:message', ['auth/signout'])">
                 Sign out

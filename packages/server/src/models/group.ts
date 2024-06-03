@@ -1,7 +1,7 @@
-import { Profile } from "./profile";
+import mongoose from "mongoose";
 
 export interface Group {
     id: string,
     name: string;
-    people: Profile[];
+    people: mongoose.Types.ObjectId[];
 }
