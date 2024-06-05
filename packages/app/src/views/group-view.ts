@@ -8,6 +8,10 @@ import { Model } from '../model';
 import { KebabMenu } from '../components/kebab-menu';
 
 const groupStyles = css`
+    * {
+        margin: 0rem;
+        box-sizing: border-box;
+    }
     body {
         margin: var(--body-margin);
         background-color: var(--color-background-primary);
