@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "/app",
+  "main": "dist/index.js",
   "exports": {
     "./models": {
       "import": "./src/models/index.ts"
