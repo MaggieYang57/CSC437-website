@@ -182,7 +182,7 @@ import { state } from "lit/decorators.js";
               <h2>COACHELLA</h2>
               <h3>SLOmies</h3>
               <expand-info href='./public/data/rendezvous/coachella.html'>
-              </expand-infon>
+              </expand-info>
             </div>
           </div>
           <div class="card" style="background-image: url(./images/edc-map.jpeg);">
@@ -190,7 +190,8 @@ import { state } from "lit/decorators.js";
               <h2 class="dates">5.17.24 - 5.19.24</h2>
               <h2>EDC LV</h2>
               <h3>The Best Group</h3>
-              <expand-info href='./public/data/rendezvous/edc.html' />
+              <expand-info href='./public/data/rendezvous/edc.html'>
+              </expand-info>
             </div>
           </div>
         `
