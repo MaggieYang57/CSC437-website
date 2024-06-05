@@ -53,7 +53,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
                 margin-top: var(--margin-size-neg);
             }
         }
-    `;let w=S;pt([d()],w.prototype,"username");function ht(o){const t=o.target.checked;T.relay(o,"light-mode",{checked:t}),document.body.classList.toggle("light-mode",t)}function ut(o){T.relay(o,"auth:message",["auth/signout"]),window.location.pathname="/login.html"}var vt=Object.defineProperty,j=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&vt(r,t,e),e};const I=class I extends h{constructor(){super(...arguments),this.color="white"}render(){return s`
+    `;let w=S;pt([d()],w.prototype,"username");function ht(o){const t=o.target.checked;T.relay(o,"light-mode",{checked:t}),document.body.classList.toggle("light-mode",t)}function ut(o){T.relay(o,"auth:message",["auth/signout"]),window.location.pathname="/login.html"}var vt=Object.defineProperty,B=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&vt(r,t,e),e};const I=class I extends h{constructor(){super(...arguments),this.color="white"}render(){return s`
       <div
         class="avatar"
         style="
@@ -84,7 +84,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
       color: var(--color-link-inverted);
       overflow: hidden;
     }
-  `;let v=I;j([d()],v.prototype,"color");j([d()],v.prototype,"src");j([d()],v.prototype,"initial");var gt=Object.defineProperty,ft=Object.getOwnPropertyDescriptor,b=(o,r,t,i)=>{for(var e=i>1?void 0:i?ft(r,t):r,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=(i?n(r,t,e):n(e))||e);return i&&e&&gt(r,t,e),e};const Y=p`
+  `;let v=I;B([d()],v.prototype,"color");B([d()],v.prototype,"src");B([d()],v.prototype,"initial");var gt=Object.defineProperty,ft=Object.getOwnPropertyDescriptor,b=(o,r,t,i)=>{for(var e=i>1?void 0:i?ft(r,t):r,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=(i?n(r,t,e):n(e))||e);return i&&e&&gt(r,t,e),e};const Y=p`
     * {
         margin: 0;
         box-sizing: border-box;
@@ -176,7 +176,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
             <a href="${this.username}/edit" class="edit">Edit</a>
         </nav>
         </section>
-      `}};R.styles=[Y];let P=R;b([d()],P.prototype,"username",2);const A=class A extends h{render(){return s`
+      `}};R.styles=[Y];let $=R;b([d()],$.prototype,"username",2);const A=class A extends h{render(){return s`
         <section>
           <slot name="avatar"></slot>
           <h1><slot name="name"></slot></h1>
@@ -226,7 +226,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
               <span slot="email">${e}</span>
               <span slot="address">${a}</span>
             </profile-viewer>
-          `}_handleSubmit(r){console.log("Handling submit of mu-form"),this.dispatchMessage(["profile/save",{id:this.id,profile:r.detail,onSuccess:()=>J.dispatch(this,"history/navigate",{href:`/app/profile/${r.detail.id}`}),onFailure:t=>console.log("ERROR:",t)}])}};F.uses=u({"profile-viewer":P,"profile-editor":k,"profile-avatar":v});let g=F;b([d({type:Boolean,reflect:!0})],g.prototype,"edit",2);b([d({attribute:"user-id",reflect:!0})],g.prototype,"userid",2);b([m()],g.prototype,"profile",1);var mt=Object.defineProperty,M=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&mt(r,t,e),e};const U=class U extends h{constructor(){super(...arguments),this.apiEndpoint="",this.username="",this.item={id:"",name:"",people:[]},this.isEditing=!1,this.tempItem={id:"",name:"",people:[]},this._authObserver=new W(this,"festivous:auth")}connectedCallback(){super.connectedCallback(),this.fetchData(),this._authObserver.observe(({user:r})=>{r&&(this.username=r.username)})}async fetchData(){try{const r=await fetch(this.apiEndpoint);if(!r.ok)throw new Error("Network response was not ok");const t=await r.json();console.log(t),this.item=t}catch(r){console.error("Fetch error:",r)}}toggleEdit(){this.isEditing=!this.isEditing,this.isEditing&&(this.tempItem={...this.item})}saveEdit(){this.item={...this.tempItem},this.isEditing=!1}cancelEdit(){this.isEditing=!1}handleInputChange(r){const t=r.target;this.tempItem={...this.tempItem,[t.name]:t.value}}render(){return s`
+          `}_handleSubmit(r){console.log("Handling submit of mu-form"),this.dispatchMessage(["profile/save",{id:this.id,profile:r.detail,onSuccess:()=>J.dispatch(this,"history/navigate",{href:`/app/profile/${r.detail.id}`}),onFailure:t=>console.log("ERROR:",t)}])}};F.uses=u({"profile-viewer":$,"profile-editor":k,"profile-avatar":v});let g=F;b([d({type:Boolean,reflect:!0})],g.prototype,"edit",2);b([d({attribute:"user-id",reflect:!0})],g.prototype,"userid",2);b([m()],g.prototype,"profile",1);var mt=Object.defineProperty,M=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&mt(r,t,e),e};const U=class U extends h{constructor(){super(...arguments),this.apiEndpoint="",this.username="",this.item={id:"",name:"",people:[]},this.isEditing=!1,this.tempItem={id:"",name:"",people:[]},this._authObserver=new W(this,"festivous:auth")}connectedCallback(){super.connectedCallback(),this.fetchData(),this._authObserver.observe(({user:r})=>{r&&(this.username=r.username)})}async fetchData(){try{const r=await fetch(this.apiEndpoint);if(!r.ok)throw new Error("Network response was not ok");const t=await r.json();console.log(t),this.item=t}catch(r){console.error("Fetch error:",r)}}toggleEdit(){this.isEditing=!this.isEditing,this.isEditing&&(this.tempItem={...this.item})}saveEdit(){this.item={...this.tempItem},this.isEditing=!1}cancelEdit(){this.isEditing=!1}handleInputChange(r){const t=r.target;this.tempItem={...this.tempItem,[t.name]:t.value}}render(){return s`
         <div class="card">
           ${this.isEditing?s`
             <input type="text" name="id" .value="${this.tempItem.id}" @input="${this.handleInputChange}" />
@@ -323,7 +323,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
         :host([open]) #panel {
             display: block;
         }
-    `;let $=N;yt([d({type:Boolean,reflect:!0})],$.prototype,"open");var wt=Object.defineProperty,kt=Object.getOwnPropertyDescriptor,B=(o,r,t,i)=>{for(var e=i>1?void 0:i?kt(r,t):r,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=(i?n(r,t,e):n(e))||e);return i&&e&&wt(r,t,e),e};const xt=p`
+    `;let P=N;yt([d({type:Boolean,reflect:!0})],P.prototype,"open");var wt=Object.defineProperty,kt=Object.getOwnPropertyDescriptor,j=(o,r,t,i)=>{for(var e=i>1?void 0:i?kt(r,t):r,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=(i?n(r,t,e):n(e))||e);return i&&e&&wt(r,t,e),e};const xt=p`
     body {
         margin: var(--body-margin);
         background-color: var(--color-background-primary);
@@ -363,7 +363,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
     .card:hover {
         box-shadow: var(--box-shadow-light);
     }
-    container {
+    .container {
         padding: var(--margin-size-small) var(--margin-size-med);
         background-color: var(--overlay-color-xlight);
         border-radius: var(--border-radius-med);
@@ -378,6 +378,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
         width: var(--full-width);
         h2 {
             float:left;
+            margin: 0;
         }
     }
     button {
@@ -425,6 +426,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
             <li>John Do</li>
             <li>Mary Lee</li>
             <li>Sophia Chen</li>
+            <li>Bonnie Brown</li>
             </ul>
         </div>
         </div>
@@ -440,8 +442,8 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
             </div>
             <ul class="names">
             <li>Remy Randeuto</li>
-            <li>Emily Mouserton</li>
-            <li>Stuart Lim </li>
+            <li>Stuart Mouserton</li>
+            <li>Bonnie Brown</li>
             </ul>
         </div>
         </div>
@@ -463,10 +465,10 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
             </ul>
         </div>
         </div>
-        <button class="add-button">ADD +</button>
-        `}};E.uses=u({"edit-card":c,"kebab-menu":$}),E.styles=[xt];let _=E;const H=class H extends L{constructor(){super("festivous:model"),this.edit=!1,this.userid=""}get group(){return this.model.group}attributeChangedCallback(r,t,i){super.attributeChangedCallback(r,t,i),r==="user-id"&&t!==i&&i&&(console.log("Group Page:",i),this.dispatchMessage(["group/select",{id:i}]))}render(){return s`
+        <button class="add-button">CREATE +</button>
+        `}};E.uses=u({"edit-card":c,"kebab-menu":P}),E.styles=[xt];let _=E;const H=class H extends L{constructor(){super("festivous:model"),this.edit=!1,this.userid=""}get group(){return this.model.group}attributeChangedCallback(r,t,i){super.attributeChangedCallback(r,t,i),r==="user-id"&&t!==i&&i&&(console.log("Group Page:",i),this.dispatchMessage(["group/select",{id:i}]))}render(){return s`
             <group-viewer></group-viewer>
-          `}};H.uses=u({"group-viewer":_});let f=H;B([d({type:Boolean,reflect:!0})],f.prototype,"edit",2);B([d({attribute:"user-id",reflect:!0})],f.prototype,"userid",2);B([m()],f.prototype,"group",1);const zt=p`
+          `}};H.uses=u({"group-viewer":_});let f=H;j([d({type:Boolean,reflect:!0})],f.prototype,"edit",2);j([d({attribute:"user-id",reflect:!0})],f.prototype,"userid",2);j([m()],f.prototype,"group",1);const zt=p`
     * {
     margin: 0rem;
     box-sizing: border-box;
@@ -482,6 +484,9 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
         font-weight: var(--font-weight-body);
         font-size: var(--font-size-body);
         letter-spacing: var(--line-width);
+    }
+    a {
+        text-decoration: none;
     }
     h1 {
         font-family: "Prompt", sans-serif;
@@ -558,24 +563,30 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
     }    
     `,q=class q extends L{render(){return s`
           <h1>YOUR FESTIVALS</h1>
-          <div class="card" style="background-image: url(./images/ferris-wheel.jpg);">
+          <a href="https://coachella.com/">
+          <div class="card" style="background-image: url(../images/ferris-wheel.jpg);">
             <div class="overlay festival">
               <h2 class="dates">4.12.24 - 4.14.24</h2>
               <h2>COACHELLA</h2>
             </div>
           </div>
-          <div class="card" style="background-image: url(./images/edc.jpg);">
+          </a>
+          <a href="https://lasvegas.electricdaisycarnival.com/">
+          <div class="card" style="background-image: url(../images/edc.jpg);">
             <div class="overlay festival">
               <h2 class="dates">5.17.24 - 5.19.24</h2>
               <h2>EDC LV</h2>
             </div>
           </div>
-          <div class="card" style="background-image: url(./images/electric-forest.jpeg);">
+          </a>
+          <a href="https://electricforest.com/">
+          <div class="card" style="background-image: url(../images/electric-forest.jpeg);">
             <div class="overlay festival">
               <h2 class="dates">6.20.24 - 6.23.24</h2>
               <h2>ELECTRIC FOREST</h2>
             </div>
           </div>
+          </a>
           <button class="add-button">ADD +</button>
         `}};q.styles=[zt];let D=q;var Mt=Object.defineProperty,Q=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&Mt(r,t,e),e};const G=class G extends h{constructor(){super(),this.href="",this.open=!1}render(){return s`
           <button id="view-button" on>View</button>
@@ -593,7 +604,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
         margin-top: var(--margin-size-small);
         font-size: var(--font-size-body);
       }
-    `;let x=G;Q([d({type:String})],x.prototype,"href");Q([d({type:Boolean,reflect:!0})],x.prototype,"open");var Pt=Object.defineProperty,$t=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&Pt(r,t,e),e};const Ct=p`
+    `;let x=G;Q([d({type:String})],x.prototype,"href");Q([d({type:Boolean,reflect:!0})],x.prototype,"open");var $t=Object.defineProperty,Pt=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&$t(r,t,e),e};const Ct=p`
     * {
     margin: 0rem;
     box-sizing: border-box;
@@ -719,7 +730,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
         <h1> RENDEZVOUS </h1>
         <label>
             <input type="checkbox" @change="${this.toggleView}" ?checked="${this.tableView}">
-            Toggle View
+            Table View
         </label>
         ${this.tableView?this.renderTableView():this.renderCardView()}
         <button class="add-button">ADD +</button>
@@ -872,12 +883,14 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
             </tr>
         </tbody>
         </table>
-        `}};O.uses=u({"expand-info":x}),O.styles=[Ct];let C=O;$t([m()],C.prototype,"tableView");const St=[{path:"/app/festival",view:()=>s`
+        `}};O.uses=u({"expand-info":x}),O.styles=[Ct];let C=O;Pt([m()],C.prototype,"tableView");const St=[{path:"/app/festival",view:()=>s`
       <festival-view></festival-view>
     `},{path:"/app/group",view:()=>s`
       <group-view></group-view>
     `},{path:"/app/profile/:id",view:o=>s`
       <profile-view user-id=${o.id}></profile-view>
+    `},{path:"/app/profile/:id/edit",view:o=>s`
+      <profile-view edit user-id=${o.id}></profile-view>
     `},{path:"/app/profile/anonymous",redirect:"/login.html"},{path:"/app/profile/login.html",redirect:"/login.html"},{path:"/app",view:()=>s`
       <rendezvous-view></rendezvous-view>
     `},{path:"/",redirect:"/app"}];u({"mu-auth":z.Provider,"mu-store":class extends rt.Provider{constructor(){super(at,ot,"festivous:auth")}},"mu-history":J.Provider,"mu-switch":class extends et.Element{constructor(){super(St,"festivous:history","festivous:auth")}},"nav-header":w,"rendezvous-view":C,"profile-view":g,"group-view":f,"festival-view":D,"edit-card":c});u({"mu-auth":z.Provider,"nav-header":w});window.relayEvent=T.relay;

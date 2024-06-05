@@ -8,7 +8,7 @@ export class KebabMenu extends LitElement {
     render() {
         return html`
         <slot name="actuator">
-            <img src="../../public/images/kebab-menu.svg" width="30px"/>
+            <img src=".public/images/kebab-menu.svg" width="30px"/>
         </slot>
         <div id="panel">
             <slot></slot>

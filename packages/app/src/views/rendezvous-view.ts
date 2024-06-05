@@ -167,7 +167,7 @@ import { state } from "lit/decorators.js";
         <h1> RENDEZVOUS </h1>
         <label>
             <input type="checkbox" @change="${this.toggleView}" ?checked="${this.tableView}">
-            Toggle View
+            Table View
         </label>
         ${this.tableView ? this.renderTableView() : this.renderCardView()}
         <button class="add-button">ADD +</button>

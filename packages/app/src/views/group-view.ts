@@ -143,6 +143,7 @@ class GroupViewer extends LitElement {
             <li>John Do</li>
             <li>Mary Lee</li>
             <li>Sophia Chen</li>
+            <li>Bonnie Brown</li>
             </ul>
         </div>
         </div>
@@ -158,8 +159,8 @@ class GroupViewer extends LitElement {
             </div>
             <ul class="names">
             <li>Remy Randeuto</li>
-            <li>Emily Mouserton</li>
-            <li>Stuart Lim </li>
+            <li>Stuart Mouserton</li>
+            <li>Bonnie Brown</li>
             </ul>
         </div>
         </div>
@@ -181,7 +182,7 @@ class GroupViewer extends LitElement {
             </ul>
         </div>
         </div>
-        <button class="add-button">ADD +</button>
+        <button class="add-button">CREATE +</button>
         `
     }
 
