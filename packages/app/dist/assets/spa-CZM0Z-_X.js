@@ -324,6 +324,10 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
             display: block;
         }
     `;let P=N;yt([d({type:Boolean,reflect:!0})],P.prototype,"open");var wt=Object.defineProperty,kt=Object.getOwnPropertyDescriptor,j=(o,r,t,i)=>{for(var e=i>1?void 0:i?kt(r,t):r,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=(i?n(r,t,e):n(e))||e);return i&&e&&wt(r,t,e),e};const xt=p`
+    * {
+        margin: 0rem;
+        box-sizing: border-box;
+    }
     body {
         margin: var(--body-margin);
         background-color: var(--color-background-primary);
