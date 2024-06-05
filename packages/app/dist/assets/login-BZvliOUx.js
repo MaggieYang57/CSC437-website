@@ -1,4 +1,4 @@
-import{d as s,r as a,s as l,x as u,e as n,a as c}from"./main-C-rYVU5A.js";s({"restful-form":a.FormElement});class i extends l{render(){return u`
+import{d as s,r as a,s as l,x as u,e as n,a as c}from"./lit-element-QqaPSkLF.js";s({"restful-form":a.FormElement});class i extends l{render(){return u`
       <restful-form new src="/auth/login">
         <slot></slot>
       </restful-form>

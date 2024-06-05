@@ -1,7 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { property, customElement} from "lit/decorators.js";
-import { Group, Profile } from 'server/models';
-import mongoose from "mongoose";
+import { Group } from 'server/models';
 
 @customElement('group-list')
 export class GroupViewerElement extends LitElement {
@@ -105,7 +104,7 @@ export class GroupEditorElement extends LitElement {
       if (this.group) {
         if (target.name === 'people') {
             try {
-              const profiles = JSON.parse(target.value) as mongoose.Types.ObjectId[];
+              const profiles = JSON.parse(target.value) as String[];
               this.group.people = profiles;
             } catch (error) {
               console.error('Invalid format for people field:', error);

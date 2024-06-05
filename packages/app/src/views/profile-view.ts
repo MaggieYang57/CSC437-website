@@ -189,7 +189,7 @@ import {
         oldValue !== newValue &&
         newValue
       ) {
-        console.log("Profiler Page:", newValue);
+        console.log("Profiler Page:", newValue); // need this dispatch to actually populate element with profile data
         this.dispatchMessage([
           "profile/select",
           { id: newValue }

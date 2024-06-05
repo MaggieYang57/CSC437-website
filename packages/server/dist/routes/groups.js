@@ -33,24 +33,18 @@ __export(groups_exports, {
 module.exports = __toCommonJS(groups_exports);
 var import_express = __toESM(require("express"));
 var import_group_service = __toESM(require("../services/group-service"));
-var import_mongoose = __toESM(require("mongoose"));
 const router = import_express.default.Router();
 router.post("/", (req, res) => {
   const newGroup = req.body;
   import_group_service.default.create(newGroup).then((g) => res.status(201).send(g)).catch((err) => res.status(500).send(err));
 });
-router.get("/", (req, res) => {
-  const userId = req.query.userid || req.body.userid;
+router.get("/user/:userId", (req, res) => {
+  const { userId } = req.params;
+  console.log(userId);
   if (!userId) {
     return res.status(400).send("User ID is required");
   }
-  let userObjectId;
-  try {
-    userObjectId = new import_mongoose.default.Types.ObjectId(userId);
-  } catch (error) {
-    return res.status(400).send("Invalid User ID format");
-  }
-  import_group_service.default.index().then((list) => list.filter((group) => group.people.some((person) => person.equals(userObjectId)))).then((filtered) => res.json(filtered)).catch((err) => res.status(500).send(err));
+  import_group_service.default.index().then((list) => list.filter((group) => group.people.some((person) => person === userId))).then((filtered) => res.json(filtered)).catch((err) => res.status(500).send(err));
 });
 router.get("/:id", (req, res) => {
   const { id } = req.params;

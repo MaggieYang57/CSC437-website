@@ -87,7 +87,7 @@ function selectProfile(
 }
 
 function selectGroup(msg: { id: string }, user: Auth.User) {
-  return fetch(`/api/groups/${msg.id}`, {
+  return fetch(`/api/groups/user/${msg.id}`, {
     headers: Auth.headers(user)
   })
     .then((response: Response) => {

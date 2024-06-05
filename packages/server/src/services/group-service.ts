@@ -6,7 +6,7 @@ const GroupSchema = new Schema<Group>(
     {
       id: { type: String, required: true, trim: true },
       name: { type: String, required: true, trim: true },
-      people: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
+      people: [String],
     },
     { collection: "group_collection" }
   );

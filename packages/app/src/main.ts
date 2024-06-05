@@ -32,6 +32,14 @@ const routes = [
     `
   },
   {
+    path: "/app/profile/anonymous",
+    redirect: "/login.html"
+  },
+  {
+    path: "/app/profile/login.html",
+    redirect: "/login.html"
+  },
+  {
     path: "/app",
     view: () => html`
       <landing-view></landing-view>
@@ -40,7 +48,7 @@ const routes = [
   {
     path: "/",
     redirect: "/app"
-  }
+  },
 ];
 
 define({

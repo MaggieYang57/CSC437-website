@@ -18,9 +18,11 @@ module.exports = __toCommonJS(models_exports);
 __reExport(models_exports, require("./credential"), module.exports);
 __reExport(models_exports, require("./profile"), module.exports);
 __reExport(models_exports, require("./group"), module.exports);
+__reExport(models_exports, require("./festival"), module.exports);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   ...require("./credential"),
   ...require("./profile"),
-  ...require("./group")
+  ...require("./group"),
+  ...require("./festival")
 });

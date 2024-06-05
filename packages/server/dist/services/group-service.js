@@ -26,7 +26,7 @@ const GroupSchema = new import_mongoose.Schema(
   {
     id: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
-    people: [{ type: import_mongoose.Schema.Types.ObjectId, ref: "Profile" }]
+    people: [String]
   },
   { collection: "group_collection" }
 );

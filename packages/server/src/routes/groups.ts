@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { Group } from "../models";
 import groups from "../services/group-service";
 import mongoose from "mongoose";
+import { ObjectId } from "mongodb";
 
 const router = express.Router();
 
@@ -13,20 +14,15 @@ router.post("/", (req: Request, res: Response) => {
     .catch((err) => res.status(500).send(err));
 });
 
-router.get("/", (req: Request, res: Response) => {
-    const userId = req.query.userid || req.body.userid;
+router.get("/user/:userId", (req: Request, res: Response) => {
+    const {userId} = req.params;
+    console.log(userId)
     if (!userId) {
         return res.status(400).send("User ID is required");
     }
-    let userObjectId;
-    try {
-        userObjectId = new mongoose.Types.ObjectId(userId as string);
-    } catch (error) {
-        return res.status(400).send("Invalid User ID format");
-    }
     groups
       .index()
-      .then((list: Group[]) => list.filter(group => group.people.some(person => person.equals(userObjectId) )))
+      .then((list: Group[]) => list.filter(group => group.people.some(person => person === userId )))
       .then(filtered => res.json(filtered))
       .catch((err) => res.status(500).send(err));
 });
