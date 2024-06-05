@@ -47,7 +47,7 @@ const groupStyles = css`
     .card:hover {
         box-shadow: var(--box-shadow-light);
     }
-    container {
+    .container {
         padding: var(--margin-size-small) var(--margin-size-med);
         background-color: var(--overlay-color-xlight);
         border-radius: var(--border-radius-med);
@@ -62,6 +62,7 @@ const groupStyles = css`
         width: var(--full-width);
         h2 {
             float:left;
+            margin: 0;
         }
     }
     button {
