@@ -101,19 +101,19 @@ import {
     render() {
         return html`
           <h1>YOUR FESTIVALS</h1>
-          <div class="card" style="background-image: url(../../public/images/ferris-wheel.jpg);">
+          <div class="card" style="background-image: url(./images/ferris-wheel.jpg);">
             <div class="overlay festival">
               <h2 class="dates">4.12.24 - 4.14.24</h2>
               <h2>COACHELLA</h2>
             </div>
           </div>
-          <div class="card" style="background-image: url(../../public/images/edc.jpg);">
+          <div class="card" style="background-image: url(./images/edc.jpg);">
             <div class="overlay festival">
               <h2 class="dates">5.17.24 - 5.19.24</h2>
               <h2>EDC LV</h2>
             </div>
           </div>
-          <div class="card" style="background-image: url(../../public/images/electric-forest.jpeg);">
+          <div class="card" style="background-image: url(./images/electric-forest.jpeg);">
             <div class="overlay festival">
               <h2 class="dates">6.20.24 - 6.23.24</h2>
               <h2>ELECTRIC FOREST</h2>

@@ -1,34 +1,34 @@
-import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c as V,g as tt,V as L,h as J,j as rt,_ as et}from"./lit-element-QqaPSkLF.js";const ot={};function at(o,r,t){switch(console.log("MESSAGE"),console.log(o),o[0]){case"profile/save":it(o[1],t).then(e=>r(a=>({...a,profile:e}))).then(()=>{const{onSuccess:e}=o[1];e&&e()}).catch(e=>{const{onFailure:a}=o[1];a&&a(e)});break;case"profile/select":nt(o[1],t).then(e=>r(a=>({...a,profile:e})));break;case"group/select":st(o[1],t).then(e=>r(a=>({...a,group:e})));break;default:const i=o[0];throw new Error(`Unhandled Auth message "${i}"`)}}function it(o,r){return fetch(`/api/profiles/${o.profile.id}`,{method:"PUT",headers:{"Content-Type":"application/json",...z.headers(r)},body:JSON.stringify(o.profile)}).then(t=>{if(t.status===200)return t.json()}).then(t=>{if(t)return t})}function nt(o,r){return fetch(`/api/profiles/${o.id}`,{headers:z.headers(r)}).then(t=>{if(t.status===200)return t.json()}).then(t=>{if(t)return console.log("Profile:",t),t})}function st(o,r){return console.log("here"),fetch(`/api/groups/user/${o.id}`,{headers:z.headers(r)}).then(t=>{if(t.status===200)return t.json()}).then(t=>{if(t)return console.log("Group:",t),t})}/**
+import{a as M,u as X,f as K,s as h,O as W,d as u,b as V,x as s,i as p,e as T,c as tt,g as rt,V as L,h as J,j as et,_ as ot}from"./lit-element-QqaPSkLF.js";const at={};function it(o,r,t){switch(console.log("MESSAGE"),console.log(o),o[0]){case"profile/save":nt(o[1],t).then(e=>r(a=>({...a,profile:e}))).then(()=>{const{onSuccess:e}=o[1];e&&e()}).catch(e=>{const{onFailure:a}=o[1];a&&a(e)});break;case"profile/select":st(o[1],t).then(e=>r(a=>({...a,profile:e})));break;case"group/select":dt(o[1],t).then(e=>r(a=>({...a,group:e})));break;default:const i=o[0];throw new Error(`Unhandled Auth message "${i}"`)}}function nt(o,r){return fetch(`/api/profiles/${o.profile.id}`,{method:"PUT",headers:{"Content-Type":"application/json",...M.headers(r)},body:JSON.stringify(o.profile)}).then(t=>{if(t.status===200)return t.json()}).then(t=>{if(t)return t})}function st(o,r){return fetch(`/api/profiles/${o.id}`,{headers:M.headers(r)}).then(t=>{if(t.status===200)return t.json()}).then(t=>{if(t)return console.log("Profile:",t),t})}function dt(o,r){return console.log("here"),fetch(`/api/groups/user/${o.id}`,{headers:M.headers(r)}).then(t=>{if(t.status===200)return t.json()}).then(t=>{if(t)return console.log("Group:",t),t})}/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const dt={attribute:!0,type:String,converter:Z,reflect:!1,hasChanged:X},lt=(o=dt,r,t)=>{const{kind:i,metadata:e}=t;let a=globalThis.litPropertyMetadata.get(e);if(a===void 0&&globalThis.litPropertyMetadata.set(e,a=new Map),a.set(t.name,o),i==="accessor"){const{name:n}=t;return{set(l){const y=r.get.call(this);r.set.call(this,l),this.requestUpdate(n,y,o)},init(l){return l!==void 0&&this.P(n,void 0,o),l}}}if(i==="setter"){const{name:n}=t;return function(l){const y=this[n];r.call(this,l),this.requestUpdate(n,y,o)}}throw Error("Unsupported decorator location: "+i)};function d(o){return(r,t)=>typeof t=="object"?lt(o,r,t):((i,e,a)=>{const n=e.hasOwnProperty(a);return e.constructor.createProperty(a,n?{...i,wrapped:!0}:i),n?Object.getOwnPropertyDescriptor(e,a):void 0})(o,r,t)}/**
+ */const lt={attribute:!0,type:String,converter:X,reflect:!1,hasChanged:K},ct=(o=lt,r,t)=>{const{kind:i,metadata:e}=t;let a=globalThis.litPropertyMetadata.get(e);if(a===void 0&&globalThis.litPropertyMetadata.set(e,a=new Map),a.set(t.name,o),i==="accessor"){const{name:n}=t;return{set(l){const y=r.get.call(this);r.set.call(this,l),this.requestUpdate(n,y,o)},init(l){return l!==void 0&&this.P(n,void 0,o),l}}}if(i==="setter"){const{name:n}=t;return function(l){const y=this[n];r.call(this,l),this.requestUpdate(n,y,o)}}throw Error("Unsupported decorator location: "+i)};function d(o){return(r,t)=>typeof t=="object"?ct(o,r,t):((i,e,a)=>{const n=e.hasOwnProperty(a);return e.constructor.createProperty(a,n?{...i,wrapped:!0}:i),n?Object.getOwnPropertyDescriptor(e,a):void 0})(o,r,t)}/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */function m(o){return d({...o,state:!0,attribute:!1})}var ct=Object.defineProperty,pt=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&ct(r,t,e),e};const S=class S extends h{constructor(){super(...arguments),this.username="anonymous",this._authObserver=new W(this,"festivous:auth")}render(){return s`
+ */function m(o){return d({...o,state:!0,attribute:!1})}var pt=Object.defineProperty,ht=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&pt(r,t,e),e};const S=class S extends h{constructor(){super(...arguments),this.username="anonymous",this._authObserver=new W(this,"festivous:auth")}render(){return s`
     <header>
         <nav class='nav'>
             <a href="/" class="logo">FESTIVOUS</a>
             <a href="/app/festival">FESTIVALS</a>
-            <a href="/group.html">GROUPS</a>
+            <a href="/app/group">GROUPS</a>
             <drop-down class="right">
                 <a name="greeting" slot="actuator"
                     >HELLO, ${this.username}</a>
                 <ul>
                     <li>
-                    <label @change=${ht}>
+                    <label @change=${ut}>
                         <input type="checkbox" autocomplete="off" />
                         LIGHT MODE
                     </label>
                     </li>
                 <li><a href="/app/profile/${this.username}">PROFILE</a></li>
-                <li><a href="#" @click=${ut}>SIGN OUT</a></li>
+                <li><a href="#" @click=${vt}>SIGN OUT</a></li>
                 </ul>
             </drop-down>
         </nav>
     </header>
-    `}connectedCallback(){super.connectedCallback(),this._authObserver.observe(({user:r})=>{r&&(this.username=r.username)})}};S.uses=u({"drop-down":K.Element}),S.styles=p`
+    `}connectedCallback(){super.connectedCallback(),this._authObserver.observe(({user:r})=>{r&&(this.username=r.username)})}};S.uses=u({"drop-down":V.Element}),S.styles=p`
         :host {
             display: contents;
         }
@@ -53,7 +53,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
                 margin-top: var(--margin-size-neg);
             }
         }
-    `;let w=S;pt([d()],w.prototype,"username");function ht(o){const t=o.target.checked;T.relay(o,"light-mode",{checked:t}),document.body.classList.toggle("light-mode",t)}function ut(o){T.relay(o,"auth:message",["auth/signout"]),window.location.pathname="/login.html"}var vt=Object.defineProperty,j=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&vt(r,t,e),e};const I=class I extends h{constructor(){super(...arguments),this.color="white"}render(){return s`
+    `;let w=S;ht([d()],w.prototype,"username");function ut(o){const t=o.target.checked;T.relay(o,"light-mode",{checked:t}),document.body.classList.toggle("light-mode",t)}function vt(o){T.relay(o,"auth:message",["auth/signout"]),window.location.pathname="/login.html"}var gt=Object.defineProperty,j=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&gt(r,t,e),e};const I=class I extends h{constructor(){super(...arguments),this.color="white"}render(){return s`
       <div
         class="avatar"
         style="
@@ -84,7 +84,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
       color: var(--color-link-inverted);
       overflow: hidden;
     }
-  `;let v=I;j([d()],v.prototype,"color");j([d()],v.prototype,"src");j([d()],v.prototype,"initial");var gt=Object.defineProperty,ft=Object.getOwnPropertyDescriptor,b=(o,r,t,i)=>{for(var e=i>1?void 0:i?ft(r,t):r,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=(i?n(r,t,e):n(e))||e);return i&&e&&gt(r,t,e),e};const Y=p`
+  `;let v=I;j([d()],v.prototype,"color");j([d()],v.prototype,"src");j([d()],v.prototype,"initial");var ft=Object.defineProperty,mt=Object.getOwnPropertyDescriptor,b=(o,r,t,i)=>{for(var e=i>1?void 0:i?mt(r,t):r,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=(i?n(r,t,e):n(e))||e);return i&&e&&ft(r,t,e),e};const Y=p`
     * {
         margin: 0;
         box-sizing: border-box;
@@ -206,7 +206,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
             <a class="close" href="../${this.username}">Close</a>
           </nav>
         </section>
-      `}};A.uses=u({"mu-form":V.Element,"input-array":tt.Element}),A.styles=[Y];let k=A;b([d()],k.prototype,"username",2);b([d({attribute:!1})],k.prototype,"init",2);const F=class F extends L{constructor(){super("festivous:model"),this.edit=!1,this.userid="",this.addEventListener("mu-form:submit",r=>this._handleSubmit(r))}get profile(){return this.model.profile}attributeChangedCallback(r,t,i){super.attributeChangedCallback(r,t,i),r==="user-id"&&t!==i&&i&&(console.log("Profiler Page:",i),this.dispatchMessage(["profile/select",{id:i}]))}render(){const{avatar:r,name:t,id:i,email:e,address:a}=this.profile||{},n=(t||i||"?").slice(0,1),l=s`
+      `}};A.uses=u({"mu-form":tt.Element,"input-array":rt.Element}),A.styles=[Y];let k=A;b([d()],k.prototype,"username",2);b([d({attribute:!1})],k.prototype,"init",2);const F=class F extends L{constructor(){super("festivous:model"),this.edit=!1,this.userid="",this.addEventListener("mu-form:submit",r=>this._handleSubmit(r))}get profile(){return this.model.profile}attributeChangedCallback(r,t,i){super.attributeChangedCallback(r,t,i),r==="user-id"&&t!==i&&i&&(console.log("Profiler Page:",i),this.dispatchMessage(["profile/select",{id:i}]))}render(){const{avatar:r,name:t,id:i,email:e,address:a}=this.profile||{},n=(t||i||"?").slice(0,1),l=s`
         <profile-avatar
           slot="avatar"
           src=${r}
@@ -226,7 +226,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
               <span slot="email">${e}</span>
               <span slot="address">${a}</span>
             </profile-viewer>
-          `}_handleSubmit(r){console.log("Handling submit of mu-form"),this.dispatchMessage(["profile/save",{id:this.id,profile:r.detail,onSuccess:()=>J.dispatch(this,"history/navigate",{href:`/app/profile/${r.detail.id}`}),onFailure:t=>console.log("ERROR:",t)}])}};F.uses=u({"profile-viewer":P,"profile-editor":k,"profile-avatar":v});let g=F;b([d({type:Boolean,reflect:!0})],g.prototype,"edit",2);b([d({attribute:"user-id",reflect:!0})],g.prototype,"userid",2);b([m()],g.prototype,"profile",1);var mt=Object.defineProperty,M=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&mt(r,t,e),e};const U=class U extends h{constructor(){super(...arguments),this.apiEndpoint="",this.username="",this.item={id:"",name:"",people:[]},this.isEditing=!1,this.tempItem={id:"",name:"",people:[]},this._authObserver=new W(this,"festivous:auth")}connectedCallback(){super.connectedCallback(),this.fetchData(),this._authObserver.observe(({user:r})=>{r&&(this.username=r.username)})}async fetchData(){try{const r=await fetch(this.apiEndpoint);if(!r.ok)throw new Error("Network response was not ok");const t=await r.json();console.log(t),this.item=t}catch(r){console.error("Fetch error:",r)}}toggleEdit(){this.isEditing=!this.isEditing,this.isEditing&&(this.tempItem={...this.item})}saveEdit(){this.item={...this.tempItem},this.isEditing=!1}cancelEdit(){this.isEditing=!1}handleInputChange(r){const t=r.target;this.tempItem={...this.tempItem,[t.name]:t.value}}render(){return s`
+          `}_handleSubmit(r){console.log("Handling submit of mu-form"),this.dispatchMessage(["profile/save",{id:this.id,profile:r.detail,onSuccess:()=>J.dispatch(this,"history/navigate",{href:`/app/profile/${r.detail.id}`}),onFailure:t=>console.log("ERROR:",t)}])}};F.uses=u({"profile-viewer":P,"profile-editor":k,"profile-avatar":v});let g=F;b([d({type:Boolean,reflect:!0})],g.prototype,"edit",2);b([d({attribute:"user-id",reflect:!0})],g.prototype,"userid",2);b([m()],g.prototype,"profile",1);var bt=Object.defineProperty,$=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&bt(r,t,e),e};const U=class U extends h{constructor(){super(...arguments),this.apiEndpoint="",this.username="",this.item={id:"",name:"",people:[]},this.isEditing=!1,this.tempItem={id:"",name:"",people:[]},this._authObserver=new W(this,"festivous:auth")}connectedCallback(){super.connectedCallback(),this.fetchData(),this._authObserver.observe(({user:r})=>{r&&(this.username=r.username)})}async fetchData(){try{const r=await fetch(this.apiEndpoint);if(!r.ok)throw new Error("Network response was not ok");const t=await r.json();console.log(t),this.item=t}catch(r){console.error("Fetch error:",r)}}toggleEdit(){this.isEditing=!this.isEditing,this.isEditing&&(this.tempItem={...this.item})}saveEdit(){this.item={...this.tempItem},this.isEditing=!1}cancelEdit(){this.isEditing=!1}handleInputChange(r){const t=r.target;this.tempItem={...this.tempItem,[t.name]:t.value}}render(){return s`
         <div class="card">
           ${this.isEditing?s`
             <input type="text" name="id" .value="${this.tempItem.id}" @input="${this.handleInputChange}" />
@@ -295,7 +295,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
         right: auto;
         left: 10px;
       }
-    `;let c=U;M([d({type:String,reflect:!0})],c.prototype,"apiEndpoint");M([d()],c.prototype,"username");M([m()],c.prototype,"item");M([m()],c.prototype,"isEditing");M([m()],c.prototype,"tempItem");var bt=Object.defineProperty,yt=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&bt(r,t,e),e};const N=class N extends h{constructor(){super(),this.open=!1,this.addEventListener("click",()=>this.toggle())}render(){return s`
+    `;let c=U;$([d({type:String,reflect:!0})],c.prototype,"apiEndpoint");$([d()],c.prototype,"username");$([m()],c.prototype,"item");$([m()],c.prototype,"isEditing");$([m()],c.prototype,"tempItem");var yt=Object.defineProperty,wt=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&yt(r,t,e),e};const N=class N extends h{constructor(){super(),this.open=!1,this.addEventListener("click",()=>this.toggle())}render(){return s`
         <slot name="actuator">
             <img src="../../public/images/kebab-menu.svg" width="30px"/>
         </slot>
@@ -323,7 +323,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
         :host([open]) #panel {
             display: block;
         }
-    `;let $=N;yt([d({type:Boolean,reflect:!0})],$.prototype,"open");var wt=Object.defineProperty,kt=Object.getOwnPropertyDescriptor,B=(o,r,t,i)=>{for(var e=i>1?void 0:i?kt(r,t):r,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=(i?n(r,t,e):n(e))||e);return i&&e&&wt(r,t,e),e};const xt=p`
+    `;let C=N;wt([d({type:Boolean,reflect:!0})],C.prototype,"open");var kt=Object.defineProperty,xt=Object.getOwnPropertyDescriptor,B=(o,r,t,i)=>{for(var e=i>1?void 0:i?xt(r,t):r,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=(i?n(r,t,e):n(e))||e);return i&&e&&kt(r,t,e),e};const zt=p`
     body {
         margin: var(--body-margin);
         background-color: var(--color-background-primary);
@@ -464,9 +464,9 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
         </div>
         </div>
         <button class="add-button">ADD +</button>
-        `}};E.uses=u({"edit-card":c,"kebab-menu":$}),E.styles=[xt];let _=E;const H=class H extends L{constructor(){super("festivous:model"),this.edit=!1,this.userid=""}get group(){return this.model.group}attributeChangedCallback(r,t,i){super.attributeChangedCallback(r,t,i),r==="user-id"&&t!==i&&i&&(console.log("Group Page:",i),this.dispatchMessage(["group/select",{id:i}]))}render(){return s`
+        `}};E.uses=u({"edit-card":c,"kebab-menu":C}),E.styles=[zt];let _=E;const H=class H extends L{constructor(){super("festivous:model"),this.edit=!1,this.userid=""}get group(){return this.model.group}attributeChangedCallback(r,t,i){super.attributeChangedCallback(r,t,i),r==="user-id"&&t!==i&&i&&(console.log("Group Page:",i),this.dispatchMessage(["group/select",{id:i}]))}render(){return s`
             <group-viewer></group-viewer>
-          `}};H.uses=u({"group-viewer":_});let f=H;B([d({type:Boolean,reflect:!0})],f.prototype,"edit",2);B([d({attribute:"user-id",reflect:!0})],f.prototype,"userid",2);B([m()],f.prototype,"group",1);const zt=p`
+          `}};H.uses=u({"group-viewer":_});let f=H;B([d({type:Boolean,reflect:!0})],f.prototype,"edit",2);B([d({attribute:"user-id",reflect:!0})],f.prototype,"userid",2);B([m()],f.prototype,"group",1);const Mt=p`
     * {
     margin: 0rem;
     box-sizing: border-box;
@@ -558,26 +558,26 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
     }    
     `,q=class q extends L{render(){return s`
           <h1>YOUR FESTIVALS</h1>
-          <div class="card" style="background-image: url(../../public/images/ferris-wheel.jpg);">
+          <div class="card" style="background-image: url(./images/ferris-wheel.jpg);">
             <div class="overlay festival">
               <h2 class="dates">4.12.24 - 4.14.24</h2>
               <h2>COACHELLA</h2>
             </div>
           </div>
-          <div class="card" style="background-image: url(../../public/images/edc.jpg);">
+          <div class="card" style="background-image: url(./images/edc.jpg);">
             <div class="overlay festival">
               <h2 class="dates">5.17.24 - 5.19.24</h2>
               <h2>EDC LV</h2>
             </div>
           </div>
-          <div class="card" style="background-image: url(../../public/images/electric-forest.jpeg);">
+          <div class="card" style="background-image: url(./images/electric-forest.jpeg);">
             <div class="overlay festival">
               <h2 class="dates">6.20.24 - 6.23.24</h2>
               <h2>ELECTRIC FOREST</h2>
             </div>
           </div>
           <button class="add-button">ADD +</button>
-        `}};q.styles=[zt];let D=q;var Mt=Object.defineProperty,Q=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&Mt(r,t,e),e};const G=class G extends h{constructor(){super(),this.href="",this.open=!1}render(){return s`
+        `}};q.styles=[Mt];let D=q;var $t=Object.defineProperty,Q=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&$t(r,t,e),e};const G=class G extends h{constructor(){super(),this.href="",this.open=!1}render(){return s`
           <button id="view-button" on>View</button>
           <div class="loaded-container"></div>
         `}firstUpdated(){var t;this.href=this.getAttribute("href"),this.open=this.hasAttribute("open"),this.open&&this.loadDetails();const r=(t=this.shadowRoot)==null?void 0:t.querySelector("#view-button");r&&r.addEventListener("click",()=>this.toggle()),this.addEventListener("drop-down:open",()=>this.loadDetails())}toggle(){var t,i;const r=(t=this.shadowRoot)==null?void 0:t.querySelector("#view-button");if(r)if(this.hasAttribute("open")){this.removeAttribute("open"),this.dispatchEvent(new CustomEvent("drop-down:close"));const e=(i=this.shadowRoot)==null?void 0:i.querySelector(".loaded-container");e&&(e.innerHTML=""),r.innerHTML="View"}else this.setAttribute("open",""),this.dispatchEvent(new CustomEvent("drop-down:open")),r.innerHTML="Close"}loadDetails(){this.href&&fetch(this.href).then(r=>{if(r.status!==200)throw`Status: ${r.status}`;return r.text()}).then(r=>this.addFragment(r))}addFragment(r){var i;const t=(i=this.shadowRoot)==null?void 0:i.querySelector(".loaded-container");t&&(t.innerHTML=r)}};G.styles=p`
@@ -593,7 +593,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
         margin-top: var(--margin-size-small);
         font-size: var(--font-size-body);
       }
-    `;let x=G;Q([d({type:String})],x.prototype,"href");Q([d({type:Boolean,reflect:!0})],x.prototype,"open");var Pt=Object.defineProperty,$t=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&Pt(r,t,e),e};const Ct=p`
+    `;let x=G;Q([d({type:String})],x.prototype,"href");Q([d({type:Boolean,reflect:!0})],x.prototype,"open");var Pt=Object.defineProperty,Z=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&Pt(r,t,e),e};const Ct=p`
     * {
     margin: 0rem;
     box-sizing: border-box;
@@ -715,15 +715,15 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
         background-color: var(--color-font-primary);
         color: var(--color-background-primary);
       }  
-    `,O=class O extends L{constructor(){super(...arguments),this.tableView=!1}toggleView(){this.tableView=!this.tableView}loadDetails(r){if(r)try{fetch(r).then(t=>{if(t.status!==200)throw`Status: ${t.status}`;return t.text()})}catch(t){return console.error("Fetch error:",t),"Error loading details"}return"No details available"}render(){return s`
-          <h1> RENDEZVOUS </h1>
-          <label>
-            <input type="checkbox" @change="${this.toggleView}" ?checked="${this.tableView}">
-            Toggle View
-        </label>
-          ${this.tableView?this.renderTableView():this.renderCardView()}
-          <button class="add-button">ADD +</button>
-        `}renderCardView(){return s`
+    `,O=class O extends L{constructor(){super(...arguments),this.userid="",this.tableView=!1}toggleView(){this.tableView=!this.tableView}loadDetails(r){if(r)try{fetch(r).then(t=>{if(t.status!==200)throw`Status: ${t.status}`;return t.text()})}catch(t){return console.error("Fetch error:",t),"Error loading details"}return"No details available"}render(){if(console.log(this.userid),this.userid==="anonymous"||this.userid==="")window.location.pathname="/login.html";else return s`
+            <h1> RENDEZVOUS </h1>
+            <label>
+                <input type="checkbox" @change="${this.toggleView}" ?checked="${this.tableView}">
+                Toggle View
+            </label>
+            ${this.tableView?this.renderTableView():this.renderCardView()}
+            <button class="add-button">ADD +</button>
+            `}renderCardView(){return s`
         <div class="card" style="background-image: url(./images/coachella-map.jpeg);">
             <div class="container">
               <h2 class="dates">4.12.24 - 4.14.24</h2>
@@ -872,12 +872,12 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
             </tr>
         </tbody>
         </table>
-        `}};O.uses=u({"expand-info":x}),O.styles=[Ct];let C=O;$t([m()],C.prototype,"tableView");const St=[{path:"/app/festival",view:()=>s`
+        `}};O.uses=u({"expand-info":x}),O.styles=[Ct];let z=O;Z([d({attribute:"user-id",reflect:!0})],z.prototype,"userid");Z([m()],z.prototype,"tableView");const St=[{path:"/app/festival",view:()=>s`
       <festival-view></festival-view>
     `},{path:"/app/group",view:()=>s`
       <group-view></group-view>
     `},{path:"/app/profile/:id",view:o=>s`
       <profile-view user-id=${o.id}></profile-view>
-    `},{path:"/app/profile/anonymous",redirect:"/login.html"},{path:"/app/profile/login.html",redirect:"/login.html"},{path:"/app",view:()=>s`
-      <rendezvous-view></rendezvous-view>
-    `},{path:"/",redirect:"/app"}];u({"mu-auth":z.Provider,"mu-store":class extends rt.Provider{constructor(){super(at,ot,"festivous:auth")}},"mu-history":J.Provider,"mu-switch":class extends et.Element{constructor(){super(St,"festivous:history","festivous:auth")}},"nav-header":w,"rendezvous-view":C,"profile-view":g,"group-view":f,"festival-view":D,"edit-card":c});u({"mu-auth":z.Provider,"nav-header":w});window.relayEvent=T.relay;
+    `},{path:"/app/profile/anonymous",redirect:"/login.html"},{path:"/app/profile/login.html",redirect:"/login.html"},{path:"/app",view:o=>s`
+      <rendezvous-view user-id=${o.id}></rendezvous-view>
+    `},{path:"/",redirect:"/app"}];u({"mu-auth":M.Provider,"mu-store":class extends et.Provider{constructor(){super(it,at,"festivous:auth")}},"mu-history":J.Provider,"mu-switch":class extends ot.Element{constructor(){super(St,"festivous:history","festivous:auth")}},"nav-header":w,"rendezvous-view":z,"profile-view":g,"group-view":f,"festival-view":D,"edit-card":c});u({"mu-auth":M.Provider,"nav-header":w});window.relayEvent=T.relay;

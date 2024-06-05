@@ -164,13 +164,13 @@ import { state } from "lit/decorators.js";
 
     render() {
         return html`
-          <h1> RENDEZVOUS </h1>
-          <label>
+        <h1> RENDEZVOUS </h1>
+        <label>
             <input type="checkbox" @change="${this.toggleView}" ?checked="${this.tableView}">
             Toggle View
         </label>
-          ${this.tableView ? this.renderTableView() : this.renderCardView()}
-          <button class="add-button">ADD +</button>
+        ${this.tableView ? this.renderTableView() : this.renderCardView()}
+        <button class="add-button">ADD +</button>
         `;
     }
 

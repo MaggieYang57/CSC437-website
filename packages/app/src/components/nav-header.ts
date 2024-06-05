@@ -16,7 +16,7 @@ export class NavHeaderElement extends LitElement {
         <nav class='nav'>
             <a href="/" class="logo">FESTIVOUS</a>
             <a href="/app/festival">FESTIVALS</a>
-            <a href="/group.html">GROUPS</a>
+            <a href="/app/group">GROUPS</a>
             <drop-down class="right">
                 <a name="greeting" slot="actuator"
                     >HELLO, ${this.username}</a>
