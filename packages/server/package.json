@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "exports": {
     "./models": {
       "import": "./src/models/index.ts"
@@ -13,7 +13,7 @@
     "build": "npx etsc",
     "start": "npm run build && npm run start:node",
     "start:api": "cross-env STATIC=./public npm run start",
-    "start:app": "cross-env STATIC=../app/dist npm run start",
+    "start:app": "npm run -w server start:app",
     "start:node": "node dist/index.js",
     "start:proto": "cross-env STATIC=../proto/public npm run start",
     "check": "npx tsc --noEmit",
