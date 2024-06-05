@@ -297,7 +297,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
       }
     `;let c=U;M([d({type:String,reflect:!0})],c.prototype,"apiEndpoint");M([d()],c.prototype,"username");M([m()],c.prototype,"item");M([m()],c.prototype,"isEditing");M([m()],c.prototype,"tempItem");var bt=Object.defineProperty,yt=(o,r,t,i)=>{for(var e=void 0,a=o.length-1,n;a>=0;a--)(n=o[a])&&(e=n(r,t,e)||e);return e&&bt(r,t,e),e};const N=class N extends h{constructor(){super(),this.open=!1,this.addEventListener("click",()=>this.toggle())}render(){return s`
         <slot name="actuator">
-            <img src="../../public/images/kebab-menu.svg" width="30px"/>
+            <img src="../images/kebab-menu.svg" width="30px"/>
         </slot>
         <div id="panel">
             <slot></slot>
