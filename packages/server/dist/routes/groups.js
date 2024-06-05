@@ -48,16 +48,16 @@ router.get("/user/:userId", (req, res) => {
 });
 router.get("/:id", (req, res) => {
   const { id } = req.params;
-  import_group_service.default.get(id).then((profile) => {
-    if (!profile)
+  import_group_service.default.get(id).then((group) => {
+    if (!group)
       throw "Not found";
     else
-      res.json(profile);
+      res.json(group);
   }).catch((err) => res.status(404).end());
 });
 router.put("/:id", (req, res) => {
   const { id } = req.params;
   const newGroup = req.body;
-  import_group_service.default.update(id, newGroup).then((profile) => res.json(profile)).catch((err) => res.status(404).end());
+  import_group_service.default.update(id, newGroup).then((group) => res.json(group)).catch((err) => res.status(404).end());
 });
 var groups_default = router;

@@ -35,8 +35,13 @@ function index() {
   return GroupModel.find();
 }
 function get(id) {
-  return GroupModel.findById(id).populate("people").then((doc) => doc).catch((err) => {
-    throw `${id} Not Found`;
+  return GroupModel.find({ "id": id }).then((list) => {
+    if (list.length === 0) {
+      throw new Error(`${id} Not Found`);
+    }
+    return list[0];
+  }).catch((err) => {
+    throw new Error(`Error fetching profile for ${id}: ${err.message}`);
   });
 }
 function create(group) {

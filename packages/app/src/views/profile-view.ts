@@ -12,19 +12,82 @@ import {
   import { Msg } from "../messages";
   import { Model } from "../model";
   
-  const gridStyles = css`
+  const profileStyle = css`
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
+    section {
+        display: grid;
+        grid-template-columns: [key] 1fr [value] 3fr [controls] 1fr [end];
+        gap: var(--margin-size-small) var(--margin-size-med);
+        align-items: end;
+        margin: var(--margin-size-med);
+    }
+    h1 {
+        grid-row: 4;
+        grid-column: value;
+    }
     slot[name="avatar"] {
-      display: block;
-      grid-row: 1 / span 4;
+        display: block;
+        grid-row: 1/ span 4;
     }
     nav {
-      display: contents;
-      text-align: right;
+        grid-column: 3;
+        grid-row: 3;
+        display: grid;
+        text-align: right;
+        margin-top: var(--margin-size-med);
+    }
+    nav > a {
+        border-radius: var(--border-radius-large);
+        border-width: var(--line-width);
+        border-style: solid;
+        border-color: var(--color-font-primary);
+        background-color: transparent;
+        padding: var(--button-padding);
+        box-shadow: none;
+        margin-top: var(--margin-size-small);
+        font-size: var(--font-size-body);
+        color: var(--color-font-primary);
+        transition: var(--transition-default);
+        text-decoration: none;
+        text-align: center;
+    }
+    nav > a:hover {
+        background-color: var(--color-font-primary);
+        color: var(--color-background-primary);
+        border-color: var(--color-background-primary);
     }
     nav > * {
-      grid-column: controls;
+        grid-column: controls;
     }
-  `;
+    mu-form {
+        grid-column: key / end;
+        margin: 0;
+    }
+    dl {
+        display: grid;
+        grid-column: key / end;
+        grid-template-columns: subgrid;
+        gap: 0 var(--margin-size-med);
+        align-items: baseline;
+    }
+    dt {
+        grid-column: key;
+        justify-self: end;
+        color: var(--color-accent);
+        font-family: var(--font-family-display);
+    }
+    dd {
+        grid-column: value;
+    }
+    ::slotted(ul) {
+        list-style: none;
+        display: flex;
+        gap: var(--margin-size-small);
+    }
+    `;
   
   class ProfileViewer extends LitElement {
     @property()
@@ -36,9 +99,6 @@ import {
         <section>
           <slot name="avatar"></slot>
           <h1><slot name="name"></slot></h1>
-          <nav>
-            <a href="${this.username}/edit" class="edit">Edit</a>
-          </nav>
           <dl>
             <dt>Username</dt>
             <dd><slot name="id"></slot></dd>
@@ -47,50 +107,15 @@ import {
             <dt>Address</dt>
             <dd><slot name="address"></slot></dd>
           </dl>
+          <nav>
+            <a href="${this.username}/edit" class="edit">Edit</a>
+        </nav>
         </section>
       `;
     }
   
     static styles = [
-      gridStyles,
-      css`
-        * {
-          margin: 0;
-          box-sizing: border-box;
-        }
-        section {
-          display: grid;
-          grid-template-columns: [key] 1fr [value] 3fr [controls] 1fr [end];
-          gap: var(--size-spacing-medium)
-            var(--size-spacing-xlarge);
-          align-items: end;
-        }
-        h1 {
-          grid-row: 4;
-          grid-column: value;
-        }
-        dl {
-          display: grid;
-          grid-column: key / end;
-          grid-template-columns: subgrid;
-          gap: 0 var(--size-spacing-xlarge);
-          align-items: baseline;
-        }
-        dt {
-          grid-column: key;
-          justify-self: end;
-          color: var(--color-accent);
-          font-family: var(--font-family-display);
-        }
-        dd {
-          grid-column: value;
-        }
-        ::slotted(ul) {
-          list-style: none;
-          display: flex;
-          gap: var(--size-spacing-medium);
-        }
-      `
+        profileStyle,
     ];
   }
   
@@ -110,10 +135,6 @@ import {
         <section>
           <slot name="avatar"></slot>
           <h1><slot name="name"></slot></h1>
-          <nav>
-            <a class="close" href="../profile">Close</a>
-            <button class="delete">Delete</button>
-          </nav>
           <mu-form .init=${this.init}>
             <label>
               <span>Username</span>
@@ -136,20 +157,15 @@ import {
               <input name="avatar" />
             </label>
           </mu-form>
+          <nav>
+            <a class="close" href="../${this.username}">Close</a>
+          </nav>
         </section>
       `;
     }
   
     static styles = [
-      gridStyles,
-      css`
-        mu-form {
-          grid-column: key / end;
-        }
-        mu-form input {
-          grid-column: input;
-        }
-      `
+      profileStyle
     ];
   }
   
@@ -202,6 +218,7 @@ import {
         avatar,
         name,
         id,
+        email,
         address,
       } = this.profile || {};
       const initial = (name || id || "?").slice(
@@ -232,7 +249,8 @@ import {
             <profile-viewer username=${id}>
               ${fields}
               <span slot="name">${name}</span>
-              <span slot="userid">${id}</span>
+              <span slot="id">${id}</span>
+              <span slot="email">${email}</span>
               <span slot="address">${address}</span>
             </profile-viewer>
           `;

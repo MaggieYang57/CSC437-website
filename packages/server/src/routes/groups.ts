@@ -32,9 +32,9 @@ router.get("/:id", (req: Request, res: Response) => {
 
   groups
     .get(id)
-    .then((profile: Group | undefined) => {
-      if (!profile) throw "Not found";
-      else res.json(profile);
+    .then((group: Group | undefined) => {
+      if (!group) throw "Not found";
+      else res.json(group);
     })
     .catch((err) => res.status(404).end());
 });
@@ -45,7 +45,7 @@ router.put("/:id", (req: Request, res: Response) => {
 
   groups
     .update(id, newGroup)
-    .then((profile: Group) => res.json(profile))
+    .then((group: Group) => res.json(group))
     .catch((err) => res.status(404).end());
 });
 

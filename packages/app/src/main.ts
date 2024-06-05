@@ -10,19 +10,21 @@ import { Model, init } from "./model";
 import update from "./update";
 import { NavHeaderElement } from "./components/nav-header";
 import { ProfileViewElement } from "./views/profile-view";
-import { GroupViewerElement } from "./views/group-view";
+import { GroupViewElement } from "./views/group-view";
+import { EditableCard } from "./components/card-display";
+import { FestivalViewElement } from "./views/festival-view";
 
 const routes = [
-  // {
-  //   path: "/app/group/:id",
-  //   view: (params: Switch.Params) => html`
-  //     <tour-view tour-id=${params.id}></tour-view>
-  //   `
-  // },
   {
-    path: "/app/profile/:id/edit",
-    view: (params: Switch.Params) => html`
-      <profile-view edit user-id=${params.id}></profile-view>
+    path: "/app/festival",
+    view: () => html`
+      <festival-view></festival-view>
+    `
+  },
+  {
+    path: "/app/group",
+    view: () => html`
+      <group-view></group-view>
     `
   },
   {
@@ -69,5 +71,7 @@ define({
   },
   "nav-header": NavHeaderElement,
   "profile-view": ProfileViewElement,
-  "group-view": GroupViewerElement
+  "group-view": GroupViewElement,
+  "festival-view":FestivalViewElement,
+  "edit-card": EditableCard,
 });

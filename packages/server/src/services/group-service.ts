@@ -18,12 +18,15 @@ function index(): Promise<Group[]> {
 }
 
 function get(id: String): Promise<Group> {
-    return GroupModel
-    .findById(id)
-    .populate("people")
-    .then((doc: unknown) => doc as Group)
+    return GroupModel.find({ 'id': id })
+    .then((list) => {
+      if (list.length === 0) {
+        throw new Error(`${id} Not Found`);
+      }
+      return list[0];
+    })
     .catch((err) => {
-      throw `${id} Not Found`;
+      throw new Error(`Error fetching profile for ${id}: ${err.message}`);
     });
 }
 
