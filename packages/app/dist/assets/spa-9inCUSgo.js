@@ -729,7 +729,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
               <h2 class="dates">4.12.24 - 4.14.24</h2>
               <h2>COACHELLA</h2>
               <h3>SLOmies</h3>
-              <expand-info href='./public/data/rendezvous/coachella.html'>
+              <expand-info href='./data/rendezvous/coachella.html'>
               </expand-info>
             </div>
           </div>
@@ -738,7 +738,7 @@ import{a as z,u as Z,f as X,s as h,O as W,d as u,b as K,x as s,i as p,e as T,c a
               <h2 class="dates">5.17.24 - 5.19.24</h2>
               <h2>EDC LV</h2>
               <h3>The Best Group</h3>
-              <expand-info href='./public/data/rendezvous/edc.html'>
+              <expand-info href='./data/rendezvous/edc.html'>
               </expand-info>
             </div>
           </div>
