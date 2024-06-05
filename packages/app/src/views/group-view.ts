@@ -1,10 +1,9 @@
 import { LitElement, html } from 'lit';
 // import { state} from "lit/decorators.js";
 import { EditableCard } from '../components/card-display';
-import { define, Form, View } from '@calpoly/mustang';
+import { define, View } from '@calpoly/mustang';
 import { property, state } from 'lit/decorators.js';
-import { Group, Profile } from 'server/models';
-import { ProfileAvatarElement } from '../components/profile-avatar';
+import { Group } from 'server/models';
 import { Msg } from '../messages';
 import { Model } from '../model';
 

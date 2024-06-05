@@ -15,8 +15,7 @@ export class NavHeaderElement extends LitElement {
     <header>
         <nav class='nav'>
             <a href="/" class="logo">FESTIVOUS</a>
-            <a href="/festival.html">FESTIVALS</a>
-            <a href="/rendezvous.html">RENDEZVOUS</a>
+            <a href="/app/festival">FESTIVALS</a>
             <a href="/group.html">GROUPS</a>
             <drop-down class="right">
                 <a name="greeting" slot="actuator"
@@ -91,4 +90,5 @@ function toggleLightMode(ev: InputEvent) {
 
 function signOutUser(ev: Event) {
   Events.relay(ev, "auth:message", ["auth/signout"]);
+  window.location.pathname = "/login.html";
 }

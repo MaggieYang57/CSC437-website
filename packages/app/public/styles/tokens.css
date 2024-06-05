@@ -52,6 +52,8 @@
     body.light-mode {
         --color-background-primary: #E6E6E6;
         --color-font-primary: #2E2E2E;
-        --overlay-color:  rgba(255, 255, 255, 0.5);
+        --overlay-color:  rgba(255, 255, 255, 0.3);
+        --overlay-color-light:  rgba(0, 0, 0, 0.6);
+        --overlay-color-xlight: rgba(0, 0, 0, 0.8);
     }
 }

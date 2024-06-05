@@ -19,25 +19,26 @@ import {
     }
     section {
         display: grid;
-        grid-template-columns: [key] 1fr [value] 3fr [controls] 1fr [end];
-        gap: var(--margin-size-small) var(--margin-size-med);
+        grid-template-columns: [key] 2fr [value] 2fr [controls] 2fr [end];
+        gap: var(--margin-size-med);
         align-items: end;
-        margin: var(--margin-size-med);
+        margin: var(--margin-size-med) auto;
     }
     h1 {
         grid-row: 4;
         grid-column: value;
     }
     slot[name="avatar"] {
-        display: block;
+        display: grid;
         grid-row: 1/ span 4;
     }
     nav {
         grid-column: 3;
-        grid-row: 3;
+        grid-row: 4;
         display: grid;
         text-align: right;
         margin-top: var(--margin-size-med);
+        justify-content: left;
     }
     nav > a {
         border-radius: var(--border-radius-large);

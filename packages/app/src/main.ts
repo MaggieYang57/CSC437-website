@@ -13,6 +13,7 @@ import { ProfileViewElement } from "./views/profile-view";
 import { GroupViewElement } from "./views/group-view";
 import { EditableCard } from "./components/card-display";
 import { FestivalViewElement } from "./views/festival-view";
+import { RendezvousViewElement } from "./views/rendezvous-view";
 
 const routes = [
   {
@@ -44,7 +45,7 @@ const routes = [
   {
     path: "/app",
     view: () => html`
-      <landing-view></landing-view>
+      <rendezvous-view></rendezvous-view>
     `
   },
   {
@@ -70,6 +71,7 @@ define({
     }
   },
   "nav-header": NavHeaderElement,
+  "rendezvous-view": RendezvousViewElement,
   "profile-view": ProfileViewElement,
   "group-view": GroupViewElement,
   "festival-view":FestivalViewElement,
